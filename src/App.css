@@ -1,0 +1,77 @@
+/* Add any additional custom CSS here */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-outline-usmkc-green {
+  color: #006400;
+  border-color: #006400;
+}
+
+.btn-outline-usmkc-green:hover {
+  background-color: #006400;
+  color: white;
+}
+
+.border-usmkc-green {
+  border-color: #006400 !important;
+}
+
+/* Offices Layout */
+.offices-container {
+  padding: 2rem 0;
+}
+
+.office-card {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #02570B;
+}
+
+.office-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Office Details */
+.office-details {
+  padding: 2rem 0;
+}
+
+.office-details .card {
+  border: 2px solid #02570B;
+}
+
+.office-details h3 {
+  color: #02570B;
+}
+
+/* Header Dropdown */
+.office-dropdown-item {
+  transition: background-color 0.2s;
+}
+
+.office-dropdown-item:hover {
+  background-color: rgba(2, 87, 11, 0.1);
+}
+
+/* Custom green button styles */
+.btn-outline-success {
+  color: #02570B;
+  border-color: #02570B;
+}
+
+.btn-outline-success:hover {
+  color: white;
+  background-color: #02570B;
+  border-color: #02570B;
+}
+
+/* Office card hover effect */
+.office-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(2, 87, 11, 0.2);
+}
