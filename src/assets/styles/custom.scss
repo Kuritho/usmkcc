@@ -74,8 +74,8 @@ body {
   color: white;
   padding: 5rem 0;
   text-align: center;
-  margin: 15px 20px; /* Only left and right margin */
-  border-radius: 2px; /* Optional: adds rounded corners */
+  margin: 15px 0px; /* Only left and right margin */
+  border-radius: 2px; 
   
   h1 {
     font-weight: 700;
@@ -642,4 +642,169 @@ body {
   }
 }
 
+.sdg-icon {
+  height: 120px; 
+  width: auto;
+  margin: 0 auto;
+  display: block;
+}
 
+/* Administration Page Styles */
+.accordion-button:not(.collapsed) {
+  background-color: rgba(2, 87, 11, 0.1);
+  color: #02570B;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(2, 87, 11, 0.25);
+  border-color: #ffcc00;
+}
+
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2302570B'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2302570B'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+
+/* For the desktop nav link hover effects */
+.nav-link-underline {
+  display: block;
+}
+
+.nav-link:hover .nav-link-underline {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* For the dropdown hover effects */
+.dropdown-item:hover {
+  background-color: #02570B !important;
+  color: white !important;
+}
+
+
+
+
+
+
+//-------SCHOLARSHIP--------//
+
+
+
+
+
+
+// Variables (customize as needed)
+$primary-color: #1e5631;
+$secondary-color: #f9f9f9;
+$text-dark: #333;
+$text-light: white;
+
+// Scholarship Page Styles
+.scholarship-page {
+  font-family: 'Arial, sans-serif';
+  background-color: $secondary-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .scholarship-header {
+    background-color: $primary-color;
+    color: $text-light;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+
+      .university-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid $text-light;
+        margin-right: 1rem;
+      }
+    }
+
+    .scholarship-nav {
+      display: flex;
+      gap: 1rem;
+
+      .nav-link {
+        color: $text-light;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .scholarship-main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1;
+
+    .scholarship-title {
+      color: $primary-color;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .scholarship-card {
+      background-color: $text-light;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      h2 {
+        color: $primary-color;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: #555;
+        margin-bottom: 1rem;
+      }
+
+      .requirements-list {
+        color: $text-dark;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+
+      .apply-button {
+        background-color: $primary-color;
+        color: $text-light;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  .scholarship-footer {
+    background-color: $primary-color;
+    color: $text-light;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+  }
+}

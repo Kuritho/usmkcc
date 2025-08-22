@@ -20,7 +20,7 @@ const Admission = () => {
 
   return (
     <Container className="py-5">
-      <h1 className="text-center mb-5 text-usmkc-green">Admission Requirements</h1>
+      <h1 className="text-center mb-5 text-usmkc-green">Steps and Guidelines</h1>
       
       <Row className="mb-5">
         <Col md={6}>

@@ -12,6 +12,13 @@ import OfficesMain from './components/OfficesMain';
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './assets/styles/custom.scss';
+import InfographicsPage from './components/InfographicsPage';
+import BoardPassersDetail from './components/BoardPassersDetail';
+import EnrollmentDataDetail from './components/EnrollmentDataDetail';
+import GraduationDataDetail from './components/GraduationDataDetail';
+import SDGHub from './components/SDGHub';
+import Administration from './components/Administration';
+import Scholarship from './components/scholarship';
 
 function App() {
   return (
@@ -26,6 +33,13 @@ function App() {
             <Route path="/admission" element={<Admission />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/offices/*" element={<OfficesMain />} />
+            <Route path="/infographics" element={<InfographicsPage />} />
+            <Route path="/infographics/board-passers" element={<BoardPassersDetail />} />
+            <Route path="/infographics/enrollment" element={<EnrollmentDataDetail />} />
+            <Route path="/infographics/graduation" element={<GraduationDataDetail />} />
+            <Route path="/sdg-hub" element={<SDGHub />} />
+            <Route path="/administration" element={<Administration />} />
+            <Route path="/scholarship" element={<Scholarship />} />
           </Routes>
         </main>
         <Footer />

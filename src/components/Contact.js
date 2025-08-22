@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { FaPhone, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 const Contact = () => {
@@ -108,79 +108,6 @@ const Contact = () => {
                   <FaYoutube className="fa-2x" style={{ color: usmGreen }} />
                 </a>
               </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      
-      {/* Contact Form */}
-      <Row>
-        <Col>
-          <Card className="shadow-sm" style={{ borderColor: usmGreen }}>
-            <Card.Header 
-              style={{ 
-                backgroundColor: usmGreen,
-                color: usmWhite,
-                fontWeight: '600'
-              }}
-            >
-              Send Us a Message
-            </Card.Header>
-            <Card.Body>
-              <Form>
-                <Row>
-                  <Col md={6}>
-                    <Form.Group controlId="formName" className="mb-3">
-                      <Form.Label style={{ color: usmLightGreen }}>Full Name</Form.Label>
-                      <Form.Control 
-                        type="text" 
-                        placeholder="Enter your name" 
-                        style={{ borderColor: usmGreen }}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group controlId="formEmail" className="mb-3">
-                      <Form.Label style={{ color: usmLightGreen }}>Email Address</Form.Label>
-                      <Form.Control 
-                        type="email" 
-                        placeholder="Enter your email" 
-                        style={{ borderColor: usmGreen }}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                
-                <Form.Group controlId="formSubject" className="mb-3">
-                  <Form.Label style={{ color: usmLightGreen }}>Subject</Form.Label>
-                  <Form.Control 
-                    type="text" 
-                    placeholder="Enter subject" 
-                    style={{ borderColor: usmGreen }}
-                  />
-                </Form.Group>
-                
-                <Form.Group controlId="formMessage" className="mb-3">
-                  <Form.Label style={{ color: usmLightGreen }}>Message</Form.Label>
-                  <Form.Control 
-                    as="textarea" 
-                    rows={5} 
-                    placeholder="Enter your message" 
-                    style={{ borderColor: usmGreen }}
-                  />
-                </Form.Group>
-                
-                <Button 
-                  type="submit"
-                  style={{ 
-                    backgroundColor: usmGreen,
-                    borderColor: usmGreen,
-                    fontWeight: '600'
-                  }}
-                >
-                  Send Message
-                </Button>
-              </Form>
             </Card.Body>
           </Card>
         </Col>

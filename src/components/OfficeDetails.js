@@ -207,17 +207,17 @@ const officeData = {
       { 
         name: "Engr. Erwin C. Bolasa, ME-CpE", 
         position: "ICTO Director",
-        image: "/images/staff/Erwin.png"
-      },
-      { 
-        name: "Reyco S. Arrogancia", 
-        position: "IT Technician",
-        image: "/images/staff/reyco.jpg"
+        image: "/images/faculty/bolasa.JPG"
       },
       { 
         name: "Kurt Brian D. Catulong", 
-        position: "IT Assistant",
+        position: "Information Systems Specialist",
         image: "/images/staff/Kurt1.png"
+      },
+      { 
+        name: "Reyco S. Arrogancia", 
+        position: "Computer Systems Analyst",
+        image: "/images/staff/reyco.jpg"
       }
     ]
   }

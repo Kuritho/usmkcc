@@ -21,7 +21,7 @@ const Footer = () => {
       position: 'relative',
       zIndex: '1',
       borderTop: '3px solid #ffcc00',
-      margin: '0 20px',
+      margin: '0 0px',
       borderRadius: '2px'
     }}>
       <Container style={{ margin: '0 auto' }}>
@@ -44,8 +44,7 @@ const Footer = () => {
                   filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'
                 }}
               />
-              <h5 style={{ color: '#ffcc00', fontWeight: '600', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>University of Southern Mindanao</h5>
-              <h6 style={{ color: '#ffffff', marginBottom: '15px', fontWeight: '500' }}>Kidapawan City Campus</h6>
+              <h5 style={{ color: '#ffcc00', fontWeight: '600', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>University of Southern Mindanao - Kidapawan City Campus</h5>
               <p style={{ marginBottom: '5px', color: '#e6e6e6' }}>Brgy. Sudapin</p>
               <p style={{ marginBottom: '5px', color: '#e6e6e6' }}>Kidapawan City, North Cotabato</p>
               <p style={{ marginBottom: '0', color: '#e6e6e6' }}>Philippines</p>
@@ -151,7 +150,7 @@ const Footer = () => {
               </div>
               <p className="mt-3" style={{ marginBottom: '10px', color: '#ffffff' }}>
                 <i className="fas fa-envelope" style={{ color: '#ffcc00', marginRight: '10px' }}></i>
-                Email: usmkcc2019@gmail.com
+                Email: info@gmail.com
               </p>
               <p style={{ marginBottom: '0', color: '#ffffff' }}>
                 <i className="fas fa-phone" style={{ color: '#ffcc00', marginRight: '10px' }}></i>
