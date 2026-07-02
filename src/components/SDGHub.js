@@ -2,27 +2,42 @@ import React from 'react';
 import { Container, Row, Col, Card, Button, Accordion } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-const SDGHub = () => {
-  const navigate = useNavigate();
-
-  const sdgGoals = [
-    {
-      id: 1,
-      title: 'No Poverty',
-      color: '#E5243B',
-      description: 'End poverty in all its forms everywhere.',
-      targets: [
-        'By 2030, eradicate extreme poverty for all people everywhere',
-        'Implement nationally appropriate social protection systems',
-        'Ensure equal rights to economic resources'
-      ],
-      usmInitiatives: [
-        'Scholarship programs for underprivileged students',
-        'Community outreach programs in impoverished areas',
-        'Financial literacy workshops'
-      ]
-    },
-    {
+export const sdgGoals = [
+  {
+    id: 1,
+    title: 'No Poverty',
+    color: '#E5243B',
+    description: 'End poverty in all its forms everywhere.',
+    targets: [
+      'By 2030, eradicate extreme poverty for all people everywhere',
+      'Implement nationally appropriate social protection systems',
+      'Ensure equal rights to economic resources'
+    ],
+    usmInitiatives: [
+      'Scholarship programs for underprivileged students',
+      'Community outreach programs in impoverished areas',
+      'Financial literacy workshops'
+    ],
+    events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/news1.jpg',  //sdg1-event1
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/news2.jpg', //sdg1-event2
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
+  },
+  {
       id: 2,
       title: 'Zero Hunger',
       color: '#DDA63A',
@@ -36,7 +51,25 @@ const SDGHub = () => {
         'Agricultural research and extension services',
         'Campus vegetable garden projects',
         'Nutrition education programs'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 3,
@@ -52,7 +85,25 @@ const SDGHub = () => {
         'Campus health services and wellness programs',
         'Public health research initiatives',
         'Community medical missions'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 4,
@@ -68,7 +119,25 @@ const SDGHub = () => {
         'Scholarship and financial aid programs',
         'Teacher training and development',
         'Community literacy programs'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 5,
@@ -84,7 +153,25 @@ const SDGHub = () => {
         'Gender sensitivity training',
         'Women leadership programs',
         'Research on gender issues'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 6,
@@ -100,7 +187,25 @@ const SDGHub = () => {
         'Water conservation research',
         'Community water system projects',
         'Sanitation education programs'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 7,
@@ -116,7 +221,25 @@ const SDGHub = () => {
         'Solar panel installations on campus',
         'Research on renewable energy solutions',
         'Energy conservation campaigns'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 8,
@@ -132,7 +255,25 @@ const SDGHub = () => {
         'Career counseling and job placement services',
         'Entrepreneurship training programs',
         'Industry partnerships for student internships'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 9,
@@ -148,7 +289,25 @@ const SDGHub = () => {
         'Engineering and technology research',
         'Innovation hubs and maker spaces',
         'Industry collaboration projects'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 10,
@@ -164,7 +323,25 @@ const SDGHub = () => {
         'Programs for indigenous communities',
         'Disability access initiatives',
         'Research on social inequality'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 11,
@@ -180,7 +357,25 @@ const SDGHub = () => {
         'Urban planning research',
         'Community development projects',
         'Heritage conservation programs'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 12,
@@ -196,7 +391,25 @@ const SDGHub = () => {
         'Campus recycling programs',
         'Sustainable agriculture research',
         'Zero-waste initiatives'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 13,
@@ -212,7 +425,25 @@ const SDGHub = () => {
         'Climate change research',
         'Tree planting campaigns',
         'Carbon footprint reduction programs'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 14,
@@ -228,7 +459,25 @@ const SDGHub = () => {
         'Marine biology research',
         'Coastal clean-up drives',
         'Fisheries management programs'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 15,
@@ -244,7 +493,25 @@ const SDGHub = () => {
         'Biodiversity research',
         'Reforestation projects',
         'Wildlife conservation programs'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 16,
@@ -260,7 +527,25 @@ const SDGHub = () => {
         'Human rights education',
         'Conflict resolution programs',
         'Good governance research'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     },
     {
       id: 17,
@@ -276,9 +561,34 @@ const SDGHub = () => {
         'International student exchange programs',
         'Collaborative research projects',
         'Community-industry partnerships'
-      ]
+      ],
+      events: [
+      {
+        id: 1,
+        title: 'Financial Literacy Workshop for Indigenous Communities',
+        date: '2023-05-15',
+        image: '/images/events/sdg1-event1.jpg',
+        summary: 'USM conducted financial literacy workshops for indigenous communities in nearby villages.',
+        fullArticle: 'The University of Southern Mindanao recently organized a series of financial literacy workshops targeting indigenous communities in the surrounding areas. The program, which ran from May 15-20, 2023, educated participants on basic financial management, savings techniques, and small business fundamentals. Over 120 individuals from three different communities participated in the initiative, which aligns with SDG Goal 1: No Poverty. The workshops were facilitated by faculty members from the College of Business Administration and student volunteers.'
+      },
+      {
+        id: 2,
+        title: 'Scholarship Awarding Ceremony 2023',
+        date: '2023-08-20',
+        image: '/images/events/sdg1-event2.jpg',
+        summary: 'Annual scholarship program awarded to 150 underprivileged students.',
+        fullArticle: 'On August 20, 2023, USM held its annual scholarship awarding ceremony, granting financial assistance to 150 underprivileged students from various programs. The initiative, now in its 10th year, has supported over 1,200 students since its inception. This year\'s scholarship fund totaled ₱2.5 million, sourced from university funds and private donors. The program directly supports SDG Goal 1 by reducing financial barriers to education for economically disadvantaged students.'
+      }
+    ]
     }
-  ];
+];
+
+const SDGHub = () => {
+  const navigate = useNavigate();
+
+  const handleSDGClick = (sdgId) => {
+    navigate(`/sdg/${sdgId}`);
+  };
 
   return (
     <Container className="py-5">
@@ -328,8 +638,9 @@ const SDGHub = () => {
         {sdgGoals.map((goal) => (
           <Col key={goal.id} xs={12} sm={6} md={4} lg={3}>
             <Card 
-              className="h-100 shadow-sm" 
+              className="h-100 shadow-sm cursor-pointer" 
               style={{ borderTop: `5px solid ${goal.color}` }}
+              onClick={() => handleSDGClick(goal.id)}
             >
               <Card.Body>
                 <div className="text-center mb-3">
@@ -342,23 +653,26 @@ const SDGHub = () => {
                 <Card.Title className="text-center">{goal.title}</Card.Title>
                 <Card.Text className="text-center">{goal.description}</Card.Text>
                 
-                <Accordion flush>
+                <Accordion flush onClick={(e) => e.stopPropagation()}>
                   <Accordion.Item eventKey={goal.id.toString()}>
-                    <Accordion.Header>Details</Accordion.Header>
+                    <Accordion.Header>Preview Details</Accordion.Header>
                     <Accordion.Body>
                       <h6>Key Targets:</h6>
                       <ul>
-                        {goal.targets.map((target, index) => (
+                        {goal.targets.slice(0, 2).map((target, index) => (
                           <li key={index}>{target}</li>
                         ))}
                       </ul>
                       
-                      <h6 className="mt-3">USM Initiatives:</h6>
+                      <h6 className="mt-3">USM-KCC Initiatives:</h6>
                       <ul>
-                        {goal.usmInitiatives.map((initiative, index) => (
+                        {goal.usmInitiatives.slice(0, 2).map((initiative, index) => (
                           <li key={index}>{initiative}</li>
                         ))}
                       </ul>
+                      <div className="text-center mt-2">
+                        <small className="text-muted">Click anywhere on card for full details</small>
+                      </div>
                     </Accordion.Body>
                   </Accordion.Item>
                 </Accordion>
@@ -369,7 +683,7 @@ const SDGHub = () => {
       </Row>
 
       {/* Call to Action */}
-      <Row className="mt-5">
+      {/* <Row className="mt-5">
         <Col>
           <Card className="bg-light">
             <Card.Body className="text-center">
@@ -387,7 +701,7 @@ const SDGHub = () => {
             </Card.Body>
           </Card>
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   );
 };

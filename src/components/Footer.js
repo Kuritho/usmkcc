@@ -14,21 +14,22 @@ const Footer = () => {
 
   return (
     <footer className="footer" style={{
-      backgroundColor: '#02570B',
+      backgroundColor: '#00482D',
       color: '#ffffff',
       padding: '40px 0',
       boxShadow: '0 -10px 30px rgba(0, 0, 0, 0.3)',
       position: 'relative',
       zIndex: '1',
-      borderTop: '3px solid #ffcc00',
-      margin: '0 0px',
-      borderRadius: '2px'
+      borderTop: '3px solid #FFD326',
+      width: '100%',
+      margin: 0,
+      borderRadius: 0
     }}>
-      <Container style={{ margin: '0 auto' }}>
+      <Container fluid style={{ padding: '0 20px', maxWidth: '100%' }}>
         <Row>
-          <Col md={4} className="mb-4 mb-md-0">
+          <Col md={3} className="mb-4 mb-md-0">
             <div style={{
-              backgroundColor: '#02570B',
+              backgroundColor: '#00482D',
               padding: '20px',
               borderRadius: '10px',
               boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.1)',
@@ -36,7 +37,7 @@ const Footer = () => {
               border: '1px solid rgba(255, 255, 255, 0.1)'
             }}>
               <img 
-                src="/images/usmkc-logo.png" 
+                src="/images/usm-logo.png" 
                 alt="USM-KCC Logo"
                 style={{ 
                   height: '60px', 
@@ -44,16 +45,16 @@ const Footer = () => {
                   filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'
                 }}
               />
-              <h5 style={{ color: '#ffcc00', fontWeight: '600', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>University of Southern Mindanao - Kidapawan City Campus</h5>
-              <p style={{ marginBottom: '5px', color: '#e6e6e6' }}>Brgy. Sudapin</p>
-              <p style={{ marginBottom: '5px', color: '#e6e6e6' }}>Kidapawan City, North Cotabato</p>
-              <p style={{ marginBottom: '0', color: '#e6e6e6' }}>Philippines</p>
+              <h5 style={{ color: '#FFD326', fontWeight: '600', textShadow: '1px 1px 2px rgba(0,0,0,0.3)', fontSize: '16px' }}>University of Southern Mindanao - Kidapawan City Campus</h5>
+              <p style={{ marginBottom: '5px', color: '#e6e6e6', fontSize: '14px' }}>Brgy. Sudapin</p>
+              <p style={{ marginBottom: '5px', color: '#e6e6e6', fontSize: '14px' }}>Kidapawan City, North Cotabato</p>
+              <p style={{ marginBottom: '0', color: '#e6e6e6', fontSize: '14px' }}>Philippines</p>
             </div>
           </Col>
           
-          <Col md={4} className="mb-4 mb-md-0">
+          <Col md={3} className="mb-4 mb-md-0">
             <div style={{
-              backgroundColor: '#02570B',
+              backgroundColor: '#00482D',
               padding: '20px',
               borderRadius: '10px',
               boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.1)',
@@ -61,10 +62,65 @@ const Footer = () => {
               border: '1px solid rgba(255, 255, 255, 0.1)'
             }}>
               <h5 style={{ 
-                color: '#ffcc00', 
+                color: '#FFD326', 
+                marginBottom: '15px', 
+                fontWeight: '600',
+                textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                fontSize: '18px'
+              }}>Our Mission</h5>
+              <p style={{ 
+                color: '#ffffff', 
+                fontSize: '14px', 
+                lineHeight: '1.6',
+                fontStyle: 'italic'
+              }}>
+                Help accelerate socio-economic development, promote harmony among diverse communities and improve quality of life through instruction, research, extension and resource generation in Southern Philippines.
+              </p>
+            </div>
+          </Col>
+          
+          <Col md={3} className="mb-4 mb-md-0">
+            <div style={{
+              backgroundColor: '#00482D',
+              padding: '20px',
+              borderRadius: '10px',
+              boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.1)',
+              height: '100%',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <h5 style={{ 
+                color: '#FFD326', 
+                marginBottom: '15px', 
+                fontWeight: '600',
+                textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                fontSize: '18px'
+              }}>Our Vision</h5>
+              <p style={{ 
+                color: '#ffffff', 
+                fontSize: '14px', 
+                lineHeight: '1.6',
+                fontStyle: 'italic'
+              }}>
+                Quality and relevant education for its clientele to be globally competitive, culture-sensitive and morally responsive human resources for sustainable development.
+              </p>
+            </div>
+          </Col>
+          
+          <Col md={3}>
+            <div style={{
+              backgroundColor: '#00482D',
+              padding: '20px',
+              borderRadius: '10px',
+              boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.1)',
+              height: '100%',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <h5 style={{ 
+                color: '#FFD326', 
                 marginBottom: '20px', 
                 fontWeight: '600',
-                textShadow: '1px 1px 2px rgba(0,0,0,0.3)'
+                textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                fontSize: '18px'
               }}>Quick Links</h5>
               <ul className="list-unstyled" style={{ lineHeight: '2' }}>
                 {quickLinks.map((item, index) => (
@@ -78,7 +134,8 @@ const Footer = () => {
                         position: 'relative',
                         paddingBottom: '2px',
                         fontWeight: '500',
-                        transition: 'all 0.3s'
+                        transition: 'all 0.3s',
+                        fontSize: '14px'
                       }}
                       className="footer-link"
                     >
@@ -89,7 +146,7 @@ const Footer = () => {
                         left: '0',
                         width: '100%',
                         height: '2px',
-                        backgroundColor: '#ffcc00',
+                        backgroundColor: '#FFD326',
                         transform: 'scaleX(0)',
                         transformOrigin: 'right',
                         transition: 'transform 0.3s ease-out'
@@ -100,10 +157,12 @@ const Footer = () => {
               </ul>
             </div>
           </Col>
-          
-          <Col md={4}>
+        </Row>
+        
+        <Row className="mt-4">
+          <Col md={8} className="mb-4 mb-md-0">
             <div style={{
-              backgroundColor: '#02570B',
+              backgroundColor: '#00482D',
               padding: '20px',
               borderRadius: '10px',
               boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.1)',
@@ -111,10 +170,11 @@ const Footer = () => {
               border: '1px solid rgba(255, 255, 255, 0.1)'
             }}>
               <h5 style={{ 
-                color: '#ffcc00', 
+                color: '#FFD326', 
                 marginBottom: '20px', 
                 fontWeight: '600',
-                textShadow: '1px 1px 2px rgba(0,0,0,0.3)'
+                textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                fontSize: '18px'
               }}>Connect With Us</h5>
               <div className="social-icons" style={{
                 display: 'flex',
@@ -131,15 +191,15 @@ const Footer = () => {
                       width: '40px',
                       height: '40px',
                       borderRadius: '50%',
-                      backgroundColor: '#1e5631',
+                      backgroundColor: '#00482D',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: '#ffcc00',
+                      color: '#FFD326',
                       fontSize: '18px',
                       textDecoration: 'none',
                       boxShadow: '3px 3px 8px rgba(0, 0, 0, 0.3), -1px -1px 4px rgba(255, 255, 255, 0.1)',
-                      border: '1px solid rgba(255, 204, 0, 0.3)',
+                      border: '1px solid rgba(255, 211, 38, 0.3)',
                       transition: 'all 0.3s'
                     }}
                     className="social-icon"
@@ -148,28 +208,62 @@ const Footer = () => {
                   </a>
                 ))}
               </div>
-              <p className="mt-3" style={{ marginBottom: '10px', color: '#ffffff' }}>
-                <i className="fas fa-envelope" style={{ color: '#ffcc00', marginRight: '10px' }}></i>
-                Email: info@gmail.com
+              <p className="mt-3" style={{ marginBottom: '10px', color: '#ffffff', fontSize: '14px' }}>
+                <i className="fas fa-envelope" style={{ color: '#FFD326', marginRight: '10px' }}></i>
+                Email: usmkcc_info@usm.edu.ph
               </p>
-              <p style={{ marginBottom: '0', color: '#ffffff' }}>
-                <i className="fas fa-phone" style={{ color: '#ffcc00', marginRight: '10px' }}></i>
-                Phone: +63 123 456 7890
+              <p style={{ marginBottom: '0', color: '#ffffff', fontSize: '14px' }}>
+                <i className="fas fa-phone" style={{ color: '#FFD326', marginRight: '10px' }}></i>
+                Phone: +63 910 307 5650
+              </p>
+            </div>
+          </Col>
+          
+          <Col md={4}>
+            <div style={{
+              backgroundColor: '#00482D',
+              padding: '20px',
+              borderRadius: '10px',
+              boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.2), -2px -2px 10px rgba(255, 255, 255, 0.1)',
+              height: '100%',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center'
+            }}>
+              <h5 style={{ 
+                color: '#FFD326', 
+                marginBottom: '15px', 
+                fontWeight: '600',
+                textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
+                fontSize: '18px'
+              }}>Excellence in Education</h5>
+              <p style={{ 
+                color: '#ffffff', 
+                fontSize: '14px', 
+                marginBottom: '0',
+                fontStyle: 'italic'
+              }}>
+                "Shaping minds, transforming communities"
               </p>
             </div>
           </Col>
         </Row>
+        
         <Row className="mt-4">
           <Col className="text-center">
             <p style={{
               margin: '0',
               padding: '15px 0',
-              backgroundColor: '#1e5631',
+              backgroundColor: '#003320',
               borderRadius: '5px',
               boxShadow: 'inset 0 2px 5px rgba(0, 0, 0, 0.2)',
-              color: '#ffcc00',
-              borderTop: '1px solid rgba(255, 204, 0, 0.3)',
-              fontWeight: '500'
+              color: '#FFD326',
+              borderTop: '1px solid rgba(255, 211, 38, 0.3)',
+              fontWeight: '500',
+              fontSize: '14px'
             }}>
               &copy; {new Date().getFullYear()} University of Southern Mindanao - Kidapawan City Campus. All Rights Reserved.
             </p>

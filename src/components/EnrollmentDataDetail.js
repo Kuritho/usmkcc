@@ -1,6 +1,6 @@
-import React from 'react';
-import { Container, Row, Col, Card, ButtonGroup, Button, Tab, Tabs } from 'react-bootstrap';
-import { Bar } from 'react-chartjs-2';
+import React, { useState, useMemo } from 'react';
+import { Container, Row, Col, Card, ButtonGroup, Button, Tab, Tabs, Form } from 'react-bootstrap';
+import { Bar, Doughnut } from 'react-chartjs-2';
 import { 
   Chart as ChartJS, 
   CategoryScale, 
@@ -8,7 +8,8 @@ import {
   BarElement, 
   Title, 
   Tooltip, 
-  Legend
+  Legend,
+  ArcElement
 } from 'chart.js';
 
 // Register ChartJS components
@@ -18,7 +19,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ArcElement
 );
 
 const EnrollmentDataDetail = () => {
@@ -268,8 +270,13 @@ const EnrollmentDataDetail = () => {
   ];
 
   // State for semester selection
-  const [currentSemester, setCurrentSemester] = React.useState('sem1_2024_2025');
-  const [activeCollege, setActiveCollege] = React.useState('cot');
+   const [currentSemester, setCurrentSemester] = useState('sem1_2024_2025');
+  const [activeCollege, setActiveCollege] = useState('cot');
+  const [viewMode, setViewMode] = useState('chart'); // 'chart' or 'table'
+  const [sortConfig, setSortConfig] = useState({ key: 'major', direction: 'ascending' });
+
+  // Combine all programs for summary view
+  const allPrograms = [...cotPrograms, ...ceasPrograms, ...coePrograms, ...gradPrograms];
 
   // Get semester label for display
   const getSemesterLabel = (semesterKey) => {
@@ -302,6 +309,40 @@ const EnrollmentDataDetail = () => {
     }
   };
 
+  // Calculate total enrollment for current college and semester
+  const totalEnrollment = useMemo(() => {
+    return getCurrentPrograms().reduce((sum, program) => sum + program[currentSemester], 0);
+  }, [activeCollege, currentSemester]);
+
+  // Calculate program type distribution for current college
+  const programTypeData = useMemo(() => {
+    const programs = getCurrentPrograms();
+    const types = {};
+    
+    programs.forEach(program => {
+      const type = program.program.split(' ')[0]; // "Bachelor", "Master", etc.
+      if (!types[type]) types[type] = 0;
+      types[type] += program[currentSemester];
+    });
+    
+    return {
+      labels: Object.keys(types),
+      datasets: [
+        {
+          data: Object.values(types),
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(75, 192, 192, 0.7)',
+            'rgba(153, 102, 255, 0.7)',
+            'rgba(255, 159, 64, 0.7)',
+            'rgba(255, 99, 132, 0.7)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
+  }, [activeCollege, currentSemester]);
+
   // Prepare chart data
   const prepareChartData = (programs) => {
     const majors = programs.map(item => item.major);
@@ -328,6 +369,31 @@ const EnrollmentDataDetail = () => {
         },
       ],
     };
+  };
+
+  // Sort programs for table view
+  const sortedPrograms = useMemo(() => {
+    let sortableItems = [...getCurrentPrograms()];
+    if (sortConfig.key) {
+      sortableItems.sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortableItems;
+  }, [getCurrentPrograms(), sortConfig]);
+
+  const requestSort = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
   };
 
   // Chart options
@@ -373,14 +439,68 @@ const EnrollmentDataDetail = () => {
     maintainAspectRatio: false
   };
 
+  const doughnutOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom',
+      },
+      title: {
+        display: true,
+        text: 'Program Type Distribution',
+        font: {
+          size: 14
+        }
+      }
+    },
+    maintainAspectRatio: false
+  };
+
   return (
-    <Container className="py-5">
+    <Container className="py-4">
       <Row className="mb-4">
         <Col>
           <div className="text-center">
-            <h1 className="text-usmkc-green">University Enrollment Data</h1>
-            <p className="lead">Detailed enrollment statistics by college and semester</p>
+            <h1 className="text-primary">University Enrollment Dashboard</h1>
+            <p className="lead text-muted">Detailed enrollment statistics by college and semester</p>
           </div>
+        </Col>
+      </Row>
+
+      {/* Summary Cards */}
+      <Row className="mb-4">
+        <Col md={3} className="mb-3">
+          <Card className="shadow-sm border-0 bg-primary text-white">
+            <Card.Body className="text-center">
+              <h5>Total Enrollment</h5>
+              <h3>{allPrograms.reduce((sum, program) => sum + program[currentSemester], 0)}</h3>
+              <small>{getSemesterLabel(currentSemester)}</small>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={3} className="mb-3">
+          <Card className="shadow-sm border-0">
+            <Card.Body className="text-center">
+              <h5>College of Technology</h5>
+              <h3>{cotPrograms.reduce((sum, program) => sum + program[currentSemester], 0)}</h3>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={3} className="mb-3">
+          <Card className="shadow-sm border-0">
+            <Card.Body className="text-center">
+              <h5>College of Education</h5>
+              <h3>{ceasPrograms.reduce((sum, program) => sum + program[currentSemester], 0)}</h3>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={3} className="mb-3">
+          <Card className="shadow-sm border-0">
+            <Card.Body className="text-center">
+              <h5>College of Engineering</h5>
+              <h3>{coePrograms.reduce((sum, program) => sum + program[currentSemester], 0)}</h3>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
 
@@ -390,6 +510,7 @@ const EnrollmentDataDetail = () => {
             activeKey={activeCollege}
             onSelect={(k) => setActiveCollege(k)}
             className="mb-3 justify-content-center"
+            fill
           >
             <Tab eventKey="cot" title="College of Technology" />
             <Tab eventKey="ceas" title="College of Education" />
@@ -399,77 +520,157 @@ const EnrollmentDataDetail = () => {
         </Col>
       </Row>
 
-      <Row className="mb-3">
-        <Col className="text-center">
-          <ButtonGroup>
-            <Button 
-              variant={currentSemester === 'sem1_2024_2025' ? 'primary' : 'outline-primary'}
-              onClick={() => setCurrentSemester('sem1_2024_2025')}
-            >
-              1st Sem 2024-2025
-            </Button>
-            <Button 
-              variant={currentSemester === 'sem2_2024_2025' ? 'primary' : 'outline-primary'}
-              onClick={() => setCurrentSemester('sem2_2024_2025')}
-            >
-              2nd Sem 2024-2025
-            </Button>
-            <Button 
-              variant={currentSemester === 'sem1_2025_2026' ? 'primary' : 'outline-primary'}
-              onClick={() => setCurrentSemester('sem1_2025_2026')}
-            >
-              1st Sem 2025-2026
-            </Button>
-          </ButtonGroup>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col>
-          <Card className="shadow">
-            <Card.Body style={{ padding: '2rem' }}>
-              <div style={{ height: '600px' }}>
-                <Bar 
-                  data={prepareChartData(getCurrentPrograms())} 
-                  options={chartOptions} 
-                />
+      <Row className="mb-4">
+        <Col md={8}>
+          <Card className="shadow-sm mb-3">
+            <Card.Body>
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h5 className="mb-0">{getCollegeName()} Enrollment</h5>
+                <ButtonGroup size="sm">
+                  <Button 
+                    variant={viewMode === 'chart' ? 'primary' : 'outline-primary'}
+                    onClick={() => setViewMode('chart')}
+                  >
+                    Chart View
+                  </Button>
+                  <Button 
+                    variant={viewMode === 'table' ? 'primary' : 'outline-primary'}
+                    onClick={() => setViewMode('table')}
+                  >
+                    Table View
+                  </Button>
+                </ButtonGroup>
               </div>
-              <div className="text-center mt-3">
+              
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <span className="fw-bold">Total: {totalEnrollment} students</span>
+                </div>
+                <ButtonGroup>
+                  <Button 
+                    variant={currentSemester === 'sem1_2024_2025' ? 'primary' : 'outline-primary'}
+                    onClick={() => setCurrentSemester('sem1_2024_2025')}
+                    size="sm"
+                  >
+                    Sem 1 2024-2025
+                  </Button>
+                  <Button 
+                    variant={currentSemester === 'sem2_2024_2025' ? 'primary' : 'outline-primary'}
+                    onClick={() => setCurrentSemester('sem2_2024_2025')}
+                    size="sm"
+                  >
+                    Sem 2 2024-2025
+                  </Button>
+                  <Button 
+                    variant={currentSemester === 'sem1_2025_2026' ? 'primary' : 'outline-primary'}
+                    onClick={() => setCurrentSemester('sem1_2025_2026')}
+                    size="sm"
+                  >
+                    Sem 1 2025-2026
+                  </Button>
+                </ButtonGroup>
+              </div>
+
+              {viewMode === 'chart' ? (
+                <div style={{ height: '400px' }}>
+                  <Bar 
+                    data={prepareChartData(getCurrentPrograms())} 
+                    options={chartOptions} 
+                  />
+                </div>
+              ) : (
+                <div className="table-responsive">
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th onClick={() => requestSort('major')} style={{cursor: 'pointer'}}>
+                          Major {sortConfig.key === 'major' ? (sortConfig.direction === 'ascending' ? '↑' : '↓') : ''}
+                        </th>
+                        <th onClick={() => requestSort('program')} style={{cursor: 'pointer'}}>
+                          Program {sortConfig.key === 'program' ? (sortConfig.direction === 'ascending' ? '↑' : '↓') : ''}
+                        </th>
+                        <th onClick={() => requestSort('sem1_2024_2025')} style={{cursor: 'pointer'}}>
+                          Sem 1 2024-2025 {sortConfig.key === 'sem1_2024_2025' ? (sortConfig.direction === 'ascending' ? '↑' : '↓') : ''}
+                        </th>
+                        <th onClick={() => requestSort('sem2_2024_2025')} style={{cursor: 'pointer'}}>
+                          Sem 2 2024-2025 {sortConfig.key === 'sem2_2024_2025' ? (sortConfig.direction === 'ascending' ? '↑' : '↓') : ''}
+                        </th>
+                        <th onClick={() => requestSort('sem1_2025_2026')} style={{cursor: 'pointer'}}>
+                          Sem 1 2025-2026 {sortConfig.key === 'sem1_2025_2026' ? (sortConfig.direction === 'ascending' ? '↑' : '↓') : ''}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sortedPrograms.map((program, index) => (
+                        <tr key={index}>
+                          <td>{program.major}</td>
+                          <td>{program.program}</td>
+                          <td>{program.sem1_2024_2025}</td>
+                          <td>{program.sem2_2024_2025}</td>
+                          <td>{program.sem1_2025_2026}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </Card.Body>
+          </Card>
+        </Col>
+        
+        <Col md={4}>
+          <Card className="shadow-sm mb-3">
+            <Card.Body>
+              <h6 className="text-center mb-3">Enrollment Summary</h6>
+              <div style={{ height: '250px' }}>
+                <Doughnut data={programTypeData} options={doughnutOptions} />
+              </div>
+            </Card.Body>
+          </Card>
+          
+          <Card className="shadow-sm">
+            <Card.Body>
+              <h6 className="text-center mb-3">Legend</h6>
+              <div>
                 {activeCollege === 'grad' ? (
                   <>
-                    <div className="d-inline-block mx-3">
-                      <span className="d-inline-block mr-2" style={{
+                    <div className="d-flex align-items-center mb-2">
+                      <div style={{
                         width: '15px',
                         height: '15px',
-                        backgroundColor: 'rgba(153, 102, 255, 0.7)'
-                      }}></span>
+                        backgroundColor: 'rgba(153, 102, 255, 0.7)',
+                        marginRight: '10px'
+                      }}></div>
                       <span>Doctoral Programs</span>
                     </div>
-                    <div className="d-inline-block mx-3">
-                      <span className="d-inline-block mr-2" style={{
+                    <div className="d-flex align-items-center mb-2">
+                      <div style={{
                         width: '15px',
                         height: '15px',
-                        backgroundColor: 'rgba(75, 192, 192, 0.7)'
-                      }}></span>
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        marginRight: '10px'
+                      }}></div>
                       <span>Master's Programs</span>
                     </div>
                   </>
                 ) : (
                   <>
-                    <div className="d-inline-block mx-3">
-                      <span className="d-inline-block mr-2" style={{
+                    <div className="d-flex align-items-center mb-2">
+                      <div style={{
                         width: '15px',
                         height: '15px',
-                        backgroundColor: 'rgba(54, 162, 235, 0.7)'
-                      }}></span>
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        marginRight: '10px'
+                      }}></div>
                       <span>Bachelor Programs</span>
                     </div>
-                    <div className="d-inline-block mx-3">
-                      <span className="d-inline-block mr-2" style={{
+                    <div className="d-flex align-items-center">
+                      <div style={{
                         width: '15px',
                         height: '15px',
-                        backgroundColor: 'rgba(255, 159, 64, 0.7)'
-                      }}></span>
+                        backgroundColor: 'rgba(255, 159, 64, 0.7)',
+                        marginRight: '10px'
+                      }}></div>
                       <span>Other Programs</span>
                     </div>
                   </>

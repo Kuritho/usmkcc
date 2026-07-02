@@ -1,10 +1,11 @@
 // src/assets/styles/custom.scss
 
 // Custom variables
-$usmkc-green: #006400;  // Dark green
-$usmkc-yellow: #FFD700; // Gold yellow
+$usmkc-green: #00482D;  // Dark green
+$usmkc-yellow: #FFD326; // Gold yellow
 $usmkc-light-green: #7CFC00;
-$usmkc-dark-green: #004d00;
+$usmkc-dark-green: #00482D;
+$usmkc-white: #ffffff;
 
 // Import Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -65,32 +66,6 @@ body {
 
 .navbar-nav.ml-auto {
   margin-left: auto !important;
-}
-
-.hero-section {
-  background: linear-gradient(rgba(56, 62, 0, 0.7), rgba(230, 242, 8, 0.174)), 
-              url('../images/adminbuilding.jpg') no-repeat center center;
-  background-size: cover;
-  color: white;
-  padding: 5rem 0;
-  text-align: center;
-  margin: 15px 0px; /* Only left and right margin */
-  border-radius: 2px; 
-  
-  h1 {
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin: 0 20px; /* Add horizontal margin to the text */
-  }
-  
-  .lead {
-    font-size: 1.5rem;
-  }
-  
-  /* Add margin to the container inside hero section */
-  .container {
-    margin: 20px;
-  }
 }
 
 .card {
@@ -808,3 +783,9 @@ $text-light: white;
     margin-top: auto;
   }
 }
+
+
+
+
+
+

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
 import NewsCard from './NewsCard';
+import styles from './Home.module.css';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -10,27 +11,27 @@ const Home = () => {
   const news = [
     {
       id: 1,
-      title: 'USM-KCC Groundbreaking ceremony for new buildings',
-      excerpt: 'The University of Southern Mindanao - Kidapawan City Campus is proud to announce...',
-      date: 'June 20, 2025',
+      title: 'USM – KIDAPAWAN CITY CAMPUS HONORS EXCELLENCE AT  25TH RECOGNITION DAY AND GAWAD PARANGAL',
+      excerpt: 'The University of Southern Mindanao–Kidapawan City Campus celebrated its 25th Recognition Day and Gawad Parangal on April 23 at the campus covered court...',
+      date: 'April 23, 2026',
       image: "/images/news1.jpg",
-      link: "https://www.usm.edu.ph/usm-kcc-to-open-two-new-buildings/"
+      link: "/news/1"
     },
     {
       id: 2,
-      title: 'USM Leaders Join UPLB HELM Fellowship',
-      excerpt: 'To support leadership development in higher education, two officials from the University of Southern Mindanao participated in the UP Los Baños Higher Education Leadership Mentoring (HELM)...',
-      date: 'June 5, 2025',
+      title: 'USM–KCC, DTI XII Formalize FABLAB Management Turnover, Sign Deed of Donation of SSF Equipment',
+      excerpt: 'The University of Southern Mindanao, in partnership with the Department of Trade and Industry (DTI) Region XI...',
+      date: 'April 6, 2026',
       image: "/images/news2.jpg",
-      link: "https://www.usm.edu.ph/usm-leaders-join-uplb-helm-fellowship/"
+      link: "/news/2"
     },
     {
       id: 3,
-      title: 'USM Students Receive Cash Assistance from TDP',
-      excerpt: 'The Tulong Dunong Program (TDP) beneficiaries of the University of Southern Mindanao (USM) once again received their ₱7500 worth of cash assistance through the Provincial Government...',
-      date: 'June 23, 2025',
+      title: 'USM–KCC Conducts Mock Board for Graduating Education Students, Launches Free LET Review Program',
+      excerpt: 'The University of Southern Mindanao – Kidapawan City Campus (USM–KCC), through the College of Education, Arts, and Sciences (CEAS), successfully conducted a Mock Board Examination for 349 graduating students...',
+      date: 'April 15, 2026',
       image: '/images/news3.jpg',
-      link: "https://www.usm.edu.ph/usm-students-receive-cash-assistance-from-tdp/"
+      link: "/news/3"
     }
   ];
 
@@ -62,41 +63,109 @@ const Home = () => {
     }
   ];
 
-  // Quick links data
+  // Quick links data – two new links added
   const quickLinks = [
-    { name: 'Student Portal', icon: 'fas fa-user-graduate', url: '#' },
+    { name: 'Student Portal', icon: 'fas fa-user-graduate', url: 'https://studentportal.usm.edu.ph/' },
     { name: 'Faculty Portal', icon: 'fas fa-chalkboard-teacher', url: '#' },
     { name: 'Online Registration', icon: 'fas fa-file-signature', url: '#' },
     { name: 'Library', icon: 'fas fa-book', url: '#' },
     { name: 'Research Portal', icon: 'fas fa-flask', url: '#' },
-    { name: 'Alumni Services', icon: 'fas fa-user-friends', url: '#' }
+    { name: 'Alumni Services', icon: 'fas fa-user-friends', url: '#' },
+    { name: 'Get USM Email', icon: 'fas fa-envelope', url: 'https://getmail.usm.edu.ph/' },
+    { name: 'USM College Entrance Exam', icon: 'fas fa-clipboard-list', url: 'https://cee.usm.edu.ph/' }
+  ];
+
+  // Hero carousel images
+  const heroImages = [
+    {
+      id: 1,
+      src: process.env.PUBLIC_URL + "/images/adminbuilding.jpg",
+      alt: "USM-KCC Campus",
+      caption: "A Premier Educational Institution in Mindanao"
+    },
+    {
+      id: 2,
+      src: process.env.PUBLIC_URL + "/images/sciencebuilding.jpg",
+      alt: "Students at USM-KCC",
+      caption: "Nurturing Future Leaders"
+    },
+    {
+      id: 3,
+      src: process.env.PUBLIC_URL + "/images/maingate.jpg",
+      alt: "Graduation Ceremony",
+      caption: "Celebrating Academic Excellence"
+    }
   ];
 
   return (
     <>
-      {/* Hero Section - Preserved from original */}
-      <section className="hero-section">
-        <Container className="ms-auto" style={{ maxWidth: "1500px" }}>
-          <h1>Welcome to</h1>
-          <h1>University of Southern Mindanao - Kidapawan City Campus</h1>
-          <p>Excellence | Service | Leadership</p>
-          <Button variant="usmkc" size="lg" className="mt-3">Explore Our Programs</Button>
+      {/* Hero Section - Redesigned with Carousel */}
+      <section className="hero-section position-relative">
+        <Carousel fade controls={false} indicators={true} interval={5000}>
+          {heroImages.map((image) => (
+            <Carousel.Item key={image.id}>
+              <div 
+                className={`d-block w-100 ${styles.heroSlide}`}
+                style={{
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url(${image.src})`,
+                }}
+              ></div>
+              <Carousel.Caption className="d-flex flex-column justify-content-center align-items-center h-100">
+                <div className="hero-content text-center">
+                  <h1 className="display-4 fw-bold mb-3 text-white">Welcome to</h1>
+                  <h2 className="display-5 fw-bold mb-3 text-white">University of Southern Mindanao - Kidapawan City Campus</h2>
+                  <p className="lead mb-4 text-light">Excellence | Service | Leadership</p>
+                  <div className="d-flex flex-wrap justify-content-center gap-3">
+                    <Link to="/academics">
+                      <button variant="light" size="lg" className="px-4 py-2 rounded-pill fw-semibold btn btn-light btn-lg">
+                        Explore Our Programs
+                      </button>
+                    </Link>
+                    {/* <Link to="/apply">
+                      <button variant="outline-light" size="lg" className="px-4 py-2 rounded-pill fw-semibold btn btn-outline-light btn-lg">
+                        Apply Now
+                      </button>
+                    </Link> */}
+                  </div>
+                </div>
+              </Carousel.Caption>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </section>
+
+      {/* Quick Stats - Moved below the hero section */}
+      <section className="bg-usmkc-green py-4">
+        <Container>
+          <Row className="text-center text-white">
+            <Col md={3} className="border-end border-white">
+              <h4 className="fw-bold mb-0">20+</h4>
+              <p className="mb-0 text-light">Academic Programs</p>
+            </Col>
+            <Col md={3} className="border-end border-white">
+              <h4 className="fw-bold mb-0">4,000+</h4>
+              <p className="mb-0 text-light">Students</p>
+            </Col>
+            <Col md={3} className="border-end border-white">
+              <h4 className="fw-bold mb-0">100+</h4>
+              <p className="mb-0 text-light">Faculty Members</p>
+            </Col>
+            <Col md={3}>
+              <h4 className="fw-bold mb-0">25+</h4>
+              <p className="mb-0 text-light">Years of Excellence</p>
+            </Col>
+          </Row>
         </Container>
       </section>
 
-      {/* News and Announcements Section - Redesigned */}
-      <section className="py-5" style={{ background: 'rgba(248, 249, 250, 0.85)' }}>
+      {/* News and Announcements Section */}
+      <section className="py-5">
         <Container>
-          <Row className="mb-4">
+          <Row className="mb-5">
             <Col>
-              <h2 className="text-center text-usmkc-green mb-3">Campus Updates</h2>
-              <div className="d-flex justify-content-center">
-                <div style={{ 
-                  width: '80px', 
-                  height: '3px', 
-                  backgroundColor: '#02570b',
-                  marginBottom: '20px'
-                }}></div>
+              <div className="text-center">
+                <h2 className="section-title position-relative d-inline-block mb-4">Campus Updates</h2>
+                <p className="text-muted">Stay informed with the latest news and announcements from USM-KCC</p>
               </div>
             </Col>
           </Row>
@@ -104,241 +173,317 @@ const Home = () => {
           <Row>
             {/* News Section */}
             <Col lg={6} className="mb-5 mb-lg-0">
-              <Card className="border-0 shadow-sm h-100">
-                <Card.Body>
-                  <div className="d-flex align-items-center mb-4">
-                    <div className="bg-usmkc-green p-2 rounded me-3">
-                      <i className="fas fa-newspaper text-white"></i>
-                    </div>
-                    <h3 className="mb-0 text-usmkc-green">News & Events</h3>
-                  </div>
-                  
-                  <div className="news-container">
-                    {news.map(item => (
-                      <NewsCard 
-                        key={item.id}
-                        title={item.title}
-                        excerpt={item.excerpt}
-                        date={item.date}
-                        image={item.image}
-                        link={item.link}
-                        type="news"
-                      />
-                    ))}
-                  </div>
-                </Card.Body>
-                
-                <Card.Footer className="bg-transparent border-0 text-center pt-0">
-                  <Button 
-                    variant="outline-usmkc-green" 
-                    size="lg"
-                    as="a" 
-                    href="https://www.usm.edu.ph"
-                    className="px-4"
-                  >
-                    View All News <i className="fas fa-arrow-right ms-2"></i>
-                  </Button>
-                </Card.Footer>
-              </Card>
+              <div className="d-flex align-items-center mb-4">
+                <div className="bg-usmkc-green p-3 rounded-circle me-3">
+                  <i className="fas fa-newspaper text-white fa-lg"></i>
+                </div>
+                <h3 className="mb-0 text-usmkc-green fw-bold">News & Events</h3>
+              </div>
+              
+              <div className="news-container">
+                {news.map(item => (
+                  <NewsCard 
+                    key={item.id}
+                    title={item.title}
+                    excerpt={item.excerpt}
+                    date={item.date}
+                    image={item.image}
+                    link={item.link}
+                    type="news"
+                  />
+                ))}
+              </div>
+              
+              <div className="text-center mt-4">
+                <Button 
+                  variant="outline-usmkc-green" 
+                  size="lg"
+                  onClick={() => navigate('/campus-updates')}
+                  className="px-4 rounded-pill"
+                >
+                  View All News <i className="fas fa-arrow-right ms-2"></i>
+                </Button>
+              </div>
             </Col>
 
             {/* Announcements Section */}
             <Col lg={6}>
-              <Card className="border-0 shadow-sm h-100">
-                <Card.Body>
-                  <div className="d-flex align-items-center mb-4">
-                    <div className="bg-usmkc-green p-2 rounded me-3">
-                      <i className="fas fa-bullhorn text-white"></i>
-                    </div>
-                    <h3 className="mb-0 text-usmkc-green">Announcements</h3>
-                  </div>
-                  
-                  <div className="announcements-container">
-                    {announcements.map(item => (
-                      <NewsCard 
-                        key={item.id}
-                        title={item.title}
-                        excerpt={item.excerpt}
-                        date={item.date}
-                        image={item.image}
-                        link={item.link}
-                        type="announcement"
-                      />
-                    ))}
-                  </div>
-                </Card.Body>
-                
-                <Card.Footer className="bg-transparent border-0 text-center pt-0">
-                  <Button 
-                    variant="outline-usmkc-green" 
-                    size="lg"
-                    as="a" 
-                    href="#"
-                    className="px-4"
-                  >
-                    View All Announcements <i className="fas fa-arrow-right ms-2"></i>
-                  </Button>
-                </Card.Footer>
-              </Card>
+              <div className="d-flex align-items-center mb-4">
+                <div className="bg-usmkc-blue p-3 rounded-circle me-3">
+                  <i className="fas fa-bullhorn text-white fa-lg"></i>
+                </div>
+                <h3 className="mb-0 text-usmkc-blue fw-bold">Announcements</h3>
+              </div>
+              
+              <div className="announcements-container">
+                {announcements.map(item => (
+                  <NewsCard 
+                    key={item.id}
+                    title={item.title}
+                    excerpt={item.excerpt}
+                    date={item.date}
+                    image={item.image}
+                    link={item.link}
+                    type="announcement"
+                  />
+                ))}
+              </div>
+              
+              <div className="text-center mt-4">
+                <Button 
+                  variant="outline-usmkc-blue" 
+                  size="lg"
+                  onClick={() => navigate('/campus-updates')}
+                  className="px-4 rounded-pill"
+                >
+                  View All Announcements <i className="fas fa-arrow-right ms-2"></i>
+                </Button>
+              </div>
             </Col>
           </Row>
         </Container>
       </section>
 
-      {/* Quick Links Center - Redesigned */}
-      <section className="py-5" style={{ background: 'rgba(255, 255, 255, 0.85)' }}>
+      {/* Quick Links Center - Redesigned with Borders */}
+      <section className="py-5">
         <Container>
-          <Row className="mb-4">
+          <Row className="mb-5">
             <Col>
-              <h2 className="text-center text-usmkc-green mb-3">Quick Links Center</h2>
-              <div className="d-flex justify-content-center">
-                <div style={{ 
-                  width: '80px', 
-                  height: '3px', 
-                  backgroundColor: '#1a3d7c',
-                  marginBottom: '20px'
-                }}></div>
+              <div className="text-center">
+                <h2 className="section-title position-relative d-inline-block mb-4">Quick Access</h2>
+                <p className="text-muted">Easy navigation to important campus resources</p>
               </div>
             </Col>
           </Row>
           
-          <Row className="justify-content-center align-items-center">
-            {/* Infographic Cards */}
-            <Col lg={5} className="mb-4 mb-lg-0">
-              <Row className="g-4">
-                <Col md={6}>
-                  <Card 
-                    onClick={() => navigate('/sdg-hub')}
-                    className="border-0 shadow-sm h-100"
-                    style={{ cursor: 'pointer', transition: 'all 0.3s' }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-5px)'}
-                    onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+          <Row className="g-4">
+            {/* Quick Links - now includes 8 items */}
+            {quickLinks.map((link, index) => (
+              <Col lg={4} md={6} key={index}>
+                <Card 
+                  as="a" 
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-100 quick-link-card text-decoration-none"
+                  style={{ 
+                    border: '2px solid #02570b',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+                  }}
+                >
+                  <Card.Body className="text-center p-4 d-flex flex-column align-items-center">
+                    <div 
+                      className="quick-link-icon mb-3 bg-usmkc-green p-3 rounded-circle"
+                      style={{ border: '2px solid #02570b' }}
+                    >
+                      <i className={`${link.icon} text-white fa-2x`}></i>
+                    </div>
+                    <h5 className="text-usmkc-blue mb-0">{link.name}</h5>
+                    <div className="quick-link-arrow mt-3">
+                      <i className="fas fa-arrow-right text-usmkc-green"></i>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+            
+            {/* SDG Hub Card */}
+            <Col lg={4} md={6}>
+              <Card 
+                onClick={() => navigate('/sdg-hub')}
+                className="h-100 quick-link-card"
+                style={{ 
+                  cursor: 'pointer',
+                  border: '2px solid #1a3d7c',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+                }}
+              >
+                <Card.Body className="text-center p-4 d-flex flex-column">
+                  <div 
+                    className="bg-usmkc-blue p-3 rounded-circle d-inline-block mb-3 mx-auto"
+                    style={{ border: '2px solid #1a3d7c' }}
                   >
-                    <Card.Header className="bg-usmkc-blue text-white text-center py-3">
-                      <h4 className="mb-0">SDG Hub</h4>
-                    </Card.Header>
-                    <Card.Body className="text-center d-flex flex-column">
-                      <div className="my-3">
-                        <i className="fas fa-globe-americas text-usmkc-blue" style={{ fontSize: '2.5rem' }}></i>
-                      </div>
-                      <p>
-                        Explore our commitment to the United Nations Sustainable Development Goals.
-                      </p>
-                      <Button 
-                        variant="outline-usmkc-blue" 
-                        className="mt-auto align-self-center"
-                      >
-                        Click here
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                
-                <Col md={6}>
-                  <Card 
-                    onClick={() => navigate('/infographics')}
-                    className="border-0 shadow-sm h-100"
-                    style={{ cursor: 'pointer', transition: 'all 0.3s' }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-5px)'}
-                    onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+                    <i className="fas fa-globe-americas text-white fa-2x"></i>
+                  </div>
+                  <h4 className="text-usmkc-blue mb-3">SDG Hub</h4>
+                  <p className="flex-grow-1">
+                    Explore our commitment to the United Nations Sustainable Development Goals.
+                  </p>
+                  <Button 
+                    variant="outline-usmkc-blue" 
+                    className="rounded-pill mt-2"
+                    style={{ border: '2px solid' }}
                   >
-                    <Card.Header className="bg-usmkc-yellow text-dark text-center py-3">
-                      <h4 className="mb-0">InfoGraphics</h4>
-                    </Card.Header>
-                    <Card.Body className="text-center d-flex flex-column">
-                      <div className="my-3">
-                        <i className="fas fa-chart-bar text-usmkc-green" style={{ fontSize: '2.5rem' }}></i>
-                      </div>
-                      <p>
-                        The Infographics page shows statistics related to the university.
-                      </p>
-                      <Button 
-                        variant="outline-usmkc-green" 
-                        className="mt-auto align-self-center"
-                      >
-                        Click here
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
+                    Learn More
+                  </Button>
+                </Card.Body>
+              </Card>
             </Col>
             
-            {/* Quick Links */}
-            <Col lg={7}>
-              <Row className="g-4">
-                {quickLinks.map((link, index) => (
-                  <Col md={4} sm={6} key={index}>
-                    <Card 
-                      as="a" 
-                      href={link.url}
-                      className="border-0 shadow-sm h-100 quick-link-card"
-                      style={{ transition: 'all 0.3s' }}
-                    >
-                      <Card.Body className="text-center p-4 d-flex flex-column">
-                        <div className="quick-link-icon mb-3">
-                          <i className={`${link.icon} text-usmkc-green`} style={{ fontSize: '2rem' }}></i>
-                        </div>
-                        <h5 className="text-usmkc-blue">{link.name}</h5>
-                        <div className="quick-link-arrow mt-auto pt-3">
-                          <i className="fas fa-arrow-right text-usmkc-blue"></i>
-                        </div>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </Row>
-            </Col>
+            {/* InfoGraphics Card */}
+            {/* <Col lg={4} md={6}>
+              <Card 
+                onClick={() => navigate('/infographics')}
+                className="h-100 quick-link-card"
+                style={{ 
+                  cursor: 'pointer',
+                  border: '2px solid #02570b',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+                }}
+              >
+                <Card.Body className="text-center p-4 d-flex flex-column">
+                  <div 
+                    className="bg-usmkc-green p-3 rounded-circle d-inline-block mb-3 mx-auto"
+                    style={{ border: '2px solid #02570b' }}
+                  >
+                    <i className="fas fa-chart-bar text-white fa-2x"></i>
+                  </div>
+                  <h4 className="text-usmkc-green mb-3">InfoGraphics</h4>
+                  <p className="flex-grow-1">
+                    The Infographics page shows statistics related to the university.
+                  </p>
+                  <Button 
+                    variant="outline-usmkc-green" 
+                    className="rounded-pill mt-2"
+                    style={{ border: '2px solid' }}
+                  >
+                    View Data
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col> */}
           </Row>
         </Container>
       </section>
 
-      {/* Mission and Vision - Preserved from original */}
+      {/* Upcoming Events Section */}
       <section className="py-5">
         <Container>
+          <Row className="mb-5">
+            <Col>
+              <div className="text-center">
+                <h2 className="section-title position-relative d-inline-block mb-4">Upcoming Events</h2>
+                <p className="text-muted">Mark your calendars for these important dates</p>
+              </div>
+            </Col>
+          </Row>
+          
           <Row>
-            <Col md={6} className="mb-4 mb-md-0">
-              <Card className="h-100">
-                <Card.Header className="bg-usmkc-yellow">
-                  <Card.Title className="text-center text-black">Vision</Card.Title>
-                </Card.Header>
-                <Card.Body className="d-flex align-items-center">
-                  <Card.Text className="text-center">
-                    Quality and relevant education for its clientele to be globally competitive, culture-sensitive and morally responsive human resources for sustainable development.
+            <Col md={4} className="mb-4">
+              <Card className="border-0 shadow-sm h-100 event-card">
+                <div className="event-date bg-usmkc-green text-white text-center p-2">
+                  <h5 className="mb-0">JUL 15</h5>
+                  <small>2025</small>
+                </div>
+                <Card.Img variant="top" src="/images/event-enrollment.jpg" />
+                <Card.Body>
+                  <Card.Title>Enrollment Period</Card.Title>
+                  <Card.Text>
+                    1st Semester A.Y. 2025-2026 enrollment for all students begins.
                   </Card.Text>
+                  <Button variant="outline-usmkc-green" size="sm">More Info</Button>
                 </Card.Body>
               </Card>
             </Col>
-            <Col md={6}>
-              <Card className="h-100">
-                <Card.Header className="bg-usmkc-green">
-                  <Card.Title className="text-center text-white">Mission</Card.Title>
-                </Card.Header>
-                <Card.Body className="d-flex align-items-center">
-                  <Card.Text className="text-center">
-                    Help accelerate socio-economic development, promote harmony among diverse communities and improve quality of life through instruction, research, extension and resource generation in Southern Philippines.
+            
+            <Col md={4} className="mb-4">
+              <Card className="border-0 shadow-sm h-100 event-card">
+                <div className="event-date bg-usmkc-blue text-white text-center p-2">
+                  <h5 className="mb-0">AUG 15</h5>
+                  <small>2025</small>
+                </div>
+                <Card.Img variant="top" src="/images/event-orientation.jpg" />
+                <Card.Body>
+                  <Card.Title>Freshman Orientation</Card.Title>
+                  <Card.Text>
+                    Welcome event for incoming freshman students of A.Y. 2025-2026.
                   </Card.Text>
+                  <Button variant="outline-usmkc-blue" size="sm">More Info</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+            
+            <Col md={4} className="mb-4">
+              <Card className="border-0 shadow-sm h-100 event-card">
+                <div className="event-date bg-usmkc-yellow text-dark text-center p-2">
+                  <h5 className="mb-0">SEP 1</h5>
+                  <small>2025</small>
+                </div>
+                <Card.Img variant="top" src="/images/event-foundation.jpg" />
+                <Card.Body>
+                  <Card.Title>Foundation Day</Card.Title>
+                  <Card.Text>
+                    Join us as we celebrate the university's founding anniversary.
+                  </Card.Text>
+                  <Button variant="outline-usmkc-yellow" size="sm">More Info</Button>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
+          
+          <div className="text-center mt-4">
+            <Button 
+              variant="usmkc-green" 
+              size="lg" 
+              onClick={() => navigate('/upcoming-events')}
+              className="px-4 rounded-pill"
+            >
+              View All Events
+            </Button>
+          </div>
         </Container>
       </section>
 
-      {/* Add your CSS in your stylesheet */}
+      {/* Call to Action Section */}
+      {/* <section className="py-5 bg-usmkc-green text-white">
+        <Container>
+          <Row className="align-items-center">
+            <Col md={8}>
+              <h3 className="fw-bold mb-3">Ready to start your journey at USM-KCC?</h3>
+              <p className="mb-0 text-white">Apply now and become part of our growing community of scholars and leaders.</p>
+            </Col>
+            <Col md={4} className="text-md-end mt-3 mt-md-0">
+              <Link to="/apply">
+                <Button variant="light" size="lg" className="me-2 rounded-pill px-4">
+                  Apply Now
+                </Button>
+              </Link>
+              <Link to="/contact">
+                <Button variant="outline-light" size="lg" className="rounded-pill px-4">
+                  Contact Us
+                </Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+      </section> */}
+
+      {/* Inline styles */}
       <style jsx>{`
         .hero-section {
-          /* Your existing hero section styles */
-          /* Preserved exactly as in your original */
+          overflow: hidden;
         }
         
-        .news-container, .announcements-container {
-          background: #fff;
-          border-radius: 8px;
+        .hero-slide {
+          position: relative;
+        }
+        
+        .section-title:after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 3px;
+          background-color: #02570b;
         }
         
         .quick-link-card {
-          transition: all 0.3s;
+          transition: all 0.3s ease;
         }
         
         .quick-link-card:hover {
@@ -347,21 +492,38 @@ const Home = () => {
         }
         
         .quick-link-icon {
-          transition: all 0.3s;
+          transition: all 0.3s ease;
         }
         
         .quick-link-card:hover .quick-link-icon {
           transform: scale(1.1);
+          background-color: #1a3d7c !important;
         }
         
-        .quick-link-arrow {
-          opacity: 0;
-          transition: all 0.3s;
+        .mission-vision-card {
+          transition: all 0.3s ease;
         }
         
-        .quick-link-card:hover .quick-link-arrow {
-          opacity: 1;
-          transform: translateX(5px);
+        .mission-vision-card:hover {
+          transform: translateY(-5px);
+        }
+        
+        .event-card {
+          transition: all 0.3s ease;
+          overflow: hidden;
+        }
+        
+        .event-card:hover {
+          transform: translateY(-5px);
+        }
+        
+        .event-date {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          z-index: 1;
+          border-radius: 5px;
+          width: 60px;
         }
       `}</style>
     </>

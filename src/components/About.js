@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, Carousel, Table } from 'react-bootstrap';
+import { Container, Row, Col, Button, Carousel } from 'react-bootstrap';
+import './About.css';
 
 const About = () => {
   const [activeButton, setActiveButton] = useState('about-usm-kcc');
@@ -13,7 +14,6 @@ const About = () => {
     { id: 5, src: "/images/pic3.jpg", alt: "Graduation Ceremony" },
     { id: 6, src: "/images/pic4.jpg", alt: "Faculty Meeting" }
   ];
-
 
   return (
     <Container className="py-5 about-container">
@@ -90,6 +90,9 @@ const About = () => {
             className="img-fluid rounded shadow mt-3 content-image portrait"
           />
         </Col>
+        <Col xs={12} className="mt-3">
+          <small className="text-muted fst-italic">Source: USM Main Campus website</small>
+        </Col>
       </Row>
       
       {/* Goals and Objectives Section */}
@@ -114,46 +117,54 @@ const About = () => {
           </ol>
           <h5 className="mt-4">Core Objectives:</h5>
           <ul>
-            <li>To provide effective, efficient and transparent governance and management practices</li>
-            <ol>
-              <li>Implement fully the enhanced autonomy policy for USM-KCC</li>
-              <li>Sustain efficient, transparent and effective management with consensus decision-making and guidance from the USM Main Campus; and</li>
-              <li>Automate and make more convenient the financial and enrolment systems for USM-KCC constituents.</li>
-            </ol>
-            <li>Become a leader and model for teaching and learning in the field of education, engineering, technology and other areas;</li>
-            <ol>
-              <li>Continue and improve on its use of information and communications technology to facilitate teaching and learning both inside and outside the classroom;</li>
-              <li>Provide adequate laboratory, classroom, library, health and other facilities;</li>
-              <li>Offer additional programs which will contribute to the development of the campus' area of responsibility;</li>
-              <li>Continued program accreditation with appropriate bodies both international and local;</li>
-              <li>Continue monitoring the performance of alumni in board exams and employment in both private and public sectors; and</li>
-              <li>Hiring and retention of highly competent and qualified faculty and staff members (preferably those on CHED scholarships);</li>
-            </ol>
-            <li>Heighten the empowerment of communities particularly in alleviating poverty and sustainable management of resources through research, training, and extension</li>
-            <ol>
-              <li>Relevant and quality RET that responds to the needs of USM-KCC constituents;</li>
-              <li>Enhance cultural heritage of indigenous peoples in the area of coverage;</li>
-              <li>Provide adequate campus RET facilities that will encourage faculty, staff, and students to conduct RET activities</li>
-              <li>Seek ways by which the intellectual output of USM-KCC personnel can be utilized and disseminated such as the establishment of a RET journal, participation in research and extension fora, or patenting/copyrighting intellectual properties;</li>
-            </ol>
-            <li>Increase and manage enrolment, enhance and expand facilities, and strengthen financial position</li>
-            <ol>
-              <li>Conduct consultations with constituents, especially as to courses that will be offered and/or revisions to existing ones which will redound towards better quality graduates and access to education especially among those coming from the underprivileged sectors of society;</li>
-              <li>Enhance enrolment system that will allow enrolment from outside the campus;</li>
-              <li>Improve farm production through adoption of modern practices and provision of adequate facilities;</li>
-              <li>Improve income generation by providing improved facilities and new investments;</li>
-              <li>Intensify efforts to seek fund sources and partnerships with outside sectors; and</li>
-              <li>Improve funds utilization through judicious and timely expenditures made in accordance with government and USM rules and regulations.</li>
-            </ol>
-            <li>Make USM-KCC a convivial place to work and study</li>
-            <ol>
-              <li>Improve benefits of campus personnel within limits set by university policies and pertinent laws;</li>
-              <li>Increase participation in campus extracurricular activities such as sports competitions, field trips, and others which promote harmony among personnel, students, alumni, parents/guardians of students, and surrounding communities;</li>
-              <li>Increase participation in civic activities together with relevant local government units and agencies that will enhance the corporate responsiveness of the campus;</li>
-              <li>Improve linkage with the private sector to implement projects designed to improve the welfare of campus constituents; and</li>
-              <li>Explore more ways by which students and USM-KCC personnel can avail of scholarships and other forms of assistance for their education and professional development.</li>             
-            </ol>
+            <li>To provide effective, efficient and transparent governance and management practices
+              <ol>
+                <li>Implement fully the enhanced autonomy policy for USM-KCC</li>
+                <li>Sustain efficient, transparent and effective management with consensus decision-making and guidance from the USM Main Campus; and</li>
+                <li>Automate and make more convenient the financial and enrolment systems for USM-KCC constituents.</li>
+              </ol>
+            </li>
+            <li>Become a leader and model for teaching and learning in the field of education, engineering, technology and other areas;
+              <ol>
+                <li>Continue and improve on its use of information and communications technology to facilitate teaching and learning both inside and outside the classroom;</li>
+                <li>Provide adequate laboratory, classroom, library, health and other facilities;</li>
+                <li>Offer additional programs which will contribute to the development of the campus' area of responsibility;</li>
+                <li>Continued program accreditation with appropriate bodies both international and local;</li>
+                <li>Continue monitoring the performance of alumni in board exams and employment in both private and public sectors; and</li>
+                <li>Hiring and retention of highly competent and qualified faculty and staff members (preferably those on CHED scholarships);</li>
+              </ol>
+            </li>
+            <li>Heighten the empowerment of communities particularly in alleviating poverty and sustainable management of resources through research, training, and extension
+              <ol>
+                <li>Relevant and quality RET that responds to the needs of USM-KCC constituents;</li>
+                <li>Enhance cultural heritage of indigenous peoples in the area of coverage;</li>
+                <li>Provide adequate campus RET facilities that will encourage faculty, staff, and students to conduct RET activities</li>
+                <li>Seek ways by which the intellectual output of USM-KCC personnel can be utilized and disseminated such as the establishment of a RET journal, participation in research and extension fora, or patenting/copyrighting intellectual properties;</li>
+              </ol>
+            </li>
+            <li>Increase and manage enrolment, enhance and expand facilities, and strengthen financial position
+              <ol>
+                <li>Conduct consultations with constituents, especially as to courses that will be offered and/or revisions to existing ones which will redound towards better quality graduates and access to education especially among those coming from the underprivileged sectors of society;</li>
+                <li>Enhance enrolment system that will allow enrolment from outside the campus;</li>
+                <li>Improve farm production through adoption of modern practices and provision of adequate facilities;</li>
+                <li>Improve income generation by providing improved facilities and new investments;</li>
+                <li>Intensify efforts to seek fund sources and partnerships with outside sectors; and</li>
+                <li>Improve funds utilization through judicious and timely expenditures made in accordance with government and USM rules and regulations.</li>
+              </ol>
+            </li>
+            <li>Make USM-KCC a convivial place to work and study
+              <ol>
+                <li>Improve benefits of campus personnel within limits set by university policies and pertinent laws;</li>
+                <li>Increase participation in campus extracurricular activities such as sports competitions, field trips, and others which promote harmony among personnel, students, alumni, parents/guardians of students, and surrounding communities;</li>
+                <li>Increase participation in civic activities together with relevant local government units and agencies that will enhance the corporate responsiveness of the campus;</li>
+                <li>Improve linkage with the private sector to implement projects designed to improve the welfare of campus constituents; and</li>
+                <li>Explore more ways by which students and USM-KCC personnel can avail of scholarships and other forms of assistance for their education and professional development.</li>             
+              </ol>
+            </li>
           </ul>
+          <Col xs={12} className="mt-3">
+            <small className="text-muted fst-italic">Source: USM Main Campus website</small>
+          </Col>
         </Col>
       </Row>
       
@@ -183,10 +194,12 @@ const About = () => {
             className="img-fluid rounded shadow content-image"
           />
         </Col>
+        <Col xs={12} className="mt-3">
+          <small className="text-muted fst-italic">Source: USM Main Campus website</small>
+        </Col>
       </Row>
       
-      
-      {/* Gallery Section */}
+      {/* Gallery Section (no source added here) */}
       <Row id="gallery" className="mb-5 py-3 section-content">
         <Col>
           <h2 className="section-subtitle mb-4">Gallery</h2>

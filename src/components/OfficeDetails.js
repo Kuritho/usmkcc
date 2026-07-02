@@ -38,7 +38,7 @@ const officeData = {
     name: "Admission and Records Office",
     description: "Handles all student admissions, enrollment, and academic records.",
     contact: "064-200-1235",
-    email: "admission@usmkcc.edu.ph",
+    email: "kcc-registrar@usm.edu.ph",
     hours: "Monday-Friday, 8:00 AM - 5:00 PM",
     location: "Ground Floor, Administration Building",
     requirements: ["Form 138", "Good Moral Certificate", "2x2 ID Photo"],
@@ -140,9 +140,9 @@ const officeData = {
     name: "Accounting Office",
     description: "Handles financial accounting, budgeting, and financial reporting.",
     contact: "064-200-1240",
-    email: "accounting@usmkcc.edu.ph",
+    email: "cherrylou.abanilla@usm.edu.ph",
     hours: "Monday-Friday, 8:00 AM - 5:00 PM",
-    location: "First Floor, Administration Building",
+    location: "Administration Building",
     staff: [
       { 
         name: "Michael Lim", 
@@ -160,7 +160,7 @@ const officeData = {
     name: "HRDM Office",
     description: "Manages human resources, recruitment, and employee relations.",
     contact: "064-200-1241",
-    email: "hr@usmkcc.edu.ph",
+    email: "usmkcchrmdo@usm.edu.ph",
     hours: "Monday-Friday, 8:00 AM - 5:00 PM",
     location: "First Floor, Administration Building",
     staff: [
@@ -211,12 +211,12 @@ const officeData = {
       },
       { 
         name: "Kurt Brian D. Catulong", 
-        position: "Information Systems Specialist",
+        position: "Information Systems Specialist I",
         image: "/images/staff/Kurt1.png"
       },
       { 
         name: "Reyco S. Arrogancia", 
-        position: "Computer Systems Analyst",
+        position: "IT Support Specialist",
         image: "/images/staff/reyco.jpg"
       }
     ]
@@ -255,6 +255,7 @@ const OfficeDetails = () => {
       </Container>
     );
   }
+
   return (
     <Container className="py-4 office-details">
       {/* Breadcrumb Navigation */}
@@ -460,50 +461,6 @@ const OfficeDetails = () => {
                   </div>
                 </div>
               ))}
-            </Card.Body>
-          </Card>
-
-          {/* Quick Actions */}
-          <Card className="mb-4 shadow-sm" style={{ borderColor: usmGreen }}>
-            <Card.Header 
-              style={{ 
-                backgroundColor: usmWhite,
-                borderBottom: `2px solid ${usmGreen}`,
-                color: usmGreen,
-                fontWeight: '600',
-                fontSize: '1.2rem'
-              }}
-            >
-              <i className="bi bi-lightning-charge-fill me-2" style={{ color: usmYellow }}></i>
-              Quick Actions
-            </Card.Header>
-            <Card.Body>
-              <Button 
-                variant="primary" 
-                className="w-100 mb-2 d-flex align-items-center justify-content-center"
-                style={{ 
-                  backgroundColor: usmGreen,
-                  borderColor: usmGreen,
-                  fontWeight: '600',
-                  height: '45px'
-                }}
-              >
-                <i className="bi bi-envelope-fill me-2"></i>
-                Contact Office
-              </Button>
-              <Button 
-                variant="outline-primary" 
-                className="w-100 d-flex align-items-center justify-content-center"
-                style={{ 
-                  borderColor: usmGreen,
-                  color: usmGreen,
-                  fontWeight: '600',
-                  height: '45px'
-                }}
-              >
-                <i className="bi bi-calendar-check-fill me-2"></i>
-                Schedule Appointment
-              </Button>
             </Card.Body>
           </Card>
 
