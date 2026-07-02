@@ -1,58 +1,25 @@
-import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const RdesPage = () => {
-  // Sample images for RDES
-  const images = [
-    {
-      id: 1,
-      url: "https://picsum.photos/id/20/800/600",
-      title: "Research Development",
-      description: "Innovative research projects driving technological advancement"
-    },
-    {
-      id: 2,
-      url: "https://picsum.photos/id/24/800/600",
-      title: "Extension Services",
-      description: "Community engagement programs reaching diverse populations"
-    },
-    {
-      id: 3,
-      url: "https://picsum.photos/id/26/800/600",
-      title: "Development Programs",
-      description: "Capacity building and institutional development initiatives"
-    },
-    {
-      id: 4,
-      url: "https://picsum.photos/id/29/800/600",
-      title: "Service Learning",
-      description: "Students applying knowledge to real-world community needs"
-    }
+  const [lightboxImage, setLightboxImage] = useState(null);
+
+  // Core areas images
+  const coreImages = [
+    '/images/rges/rges1.jpg',
+    '/images/rges/rges2.jpg',
+    '/images/rges/rges3.jpg',
+    '/images/rges/rges4.jpg'
   ];
 
-  const keyAreas = [
-    {
-      icon: "fas fa-chart-line",
-      title: "Research Development",
-      description: "Strengthening research capabilities, providing grants, and fostering a culture of innovation and scholarly inquiry."
-    },
-    {
-      icon: "fas fa-seedling",
-      title: "Sustainable Development",
-      description: "Aligning programs with SDGs and creating sustainable impact through community-based interventions."
-    },
-    {
-      icon: "fas fa-users",
-      title: "Extension Services",
-      description: "Delivering relevant extension programs that empower communities and address local development challenges."
-    },
-    {
-      icon: "fas fa-tools",
-      title: "Technical Services",
-      description: "Providing expert technical assistance, laboratory services, and consultancy to external partners."
-    }
-  ];
+  const handleImageClick = (src) => {
+    setLightboxImage(src);
+  };
+
+  const handleClose = () => {
+    setLightboxImage(null);
+  };
 
   return (
     <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
@@ -84,11 +51,8 @@ const RdesPage = () => {
                 fontWeight: '700',
                 marginBottom: '20px'
               }}>
-                Research, Development, Extension & Services
+                Resource Generation and Entrepreneurial Services Office
               </h1>
-              <p style={{ fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>
-                Integrating research, development, extension, and services to create holistic solutions for societal advancement
-              </p>
             </Col>
           </Row>
         </Container>
@@ -110,10 +74,10 @@ const RdesPage = () => {
                   A Comprehensive Approach to Knowledge and Service
                 </h2>
                 <p style={{ fontSize: '1.1rem', lineHeight: '1.7', color: '#333', textAlign: 'justify' }}>
-                  The Research, Development, Extension, and Services (RDES) framework at USM KCC represents our holistic commitment to creating meaningful impact in society. This integrated approach ensures that knowledge generated through research is effectively translated into practical applications through development programs, extended to communities, and supported by responsive services.
+                 The Resource Generation and Entrepreneurial Services Office effectively generates income to enhance the Campus's financial resources. It is primarily responsible for initiating, operating, and managing income-generating projects; providing quality and affordable products and services to its constituents; and creating opportunities for faculty members and staff to earn additional income.
                 </p>
                 <p style={{ fontSize: '1.1rem', lineHeight: '1.7', color: '#333', marginTop: '15px', textAlign: 'justify' }}>
-                  RDES embodies the university's role as a catalyst for positive change, where rigorous research informs development initiatives, which are then delivered through extension programs and supported by quality services. This cycle of continuous improvement ensures that USM KCC remains responsive to the evolving needs of our stakeholders and contributes meaningfully to regional and national development goals.
+                  The Office supervises and monitors the implementation and operations of various non-farm and farm-based projects, ensuring their sustainability and alignment with institutional objectives. The income generated from these projects shall form part of a special trust or revolving fund mechanism, wherein all related expenditures are subject to existing government accounting and auditing rules and regulations.
                 </p>
                 <div style={{ 
                   backgroundColor: '#f0f9f0', 
@@ -132,7 +96,7 @@ const RdesPage = () => {
           </Col>
         </Row>
 
-        {/* Key Areas Grid */}
+        {/* Our Core Areas - Pictures Only (Clickable) */}
         <Row className="mb-5">
           <Col>
             <h2 style={{ 
@@ -152,91 +116,123 @@ const RdesPage = () => {
         </Row>
 
         <Row className="g-4 mb-5">
-          {keyAreas.map((area, index) => (
+          {coreImages.map((src, index) => (
             <Col md={6} key={index}>
-              <div style={{
-                backgroundColor: '#ffffff',
-                borderRadius: '12px',
-                padding: '25px',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                height: '100%',
-                transition: 'all 0.3s ease',
-                textAlign: 'center'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-5px)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-              }}>
-                <i className={area.icon} style={{ fontSize: '3rem', color: '#FFD326', marginBottom: '15px' }}></i>
-                <h4 style={{ color: '#00482D', marginBottom: '15px', fontWeight: '600' }}>
-                  {area.title}
-                </h4>
-                <p style={{ color: '#666', lineHeight: '1.6' }}>
-                  {area.description}
-                </p>
-              </div>
-            </Col>
-          ))}
-        </Row>
-
-        {/* Image Gallery */}
-        <Row className="mb-5">
-          <Col>
-            <h2 style={{ 
-              color: '#00482D', 
-              marginBottom: '30px', 
-              fontWeight: '600',
-              textAlign: 'center',
-              borderBottom: '3px solid #FFD326',
-              display: 'inline-block',
-              width: 'auto',
-              paddingBottom: '10px'
-            }}>
-              <i className="fas fa-camera-retro me-2"></i>
-              In Action
-            </h2>
-          </Col>
-        </Row>
-
-        <Row className="g-4 mb-5">
-          {images.map((image) => (
-            <Col md={6} key={image.id}>
-              <div style={{
-                backgroundColor: '#ffffff',
-                borderRadius: '12px',
-                overflow: 'hidden',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                transition: 'transform 0.3s ease',
-                height: '100%'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}>
+              <div 
+                style={{
+                  backgroundColor: '#ffffff',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  cursor: 'pointer',
+                  height: '100%'
+                }}
+                onClick={() => handleImageClick(src)}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+                }}
+              >
                 <img
-                  src={image.url}
-                  alt={image.title}
+                  src={src}
+                  alt={`Core area ${index + 1}`}
                   style={{
                     width: '100%',
-                    height: '250px',
-                    objectFit: 'cover',
+                    height: 'auto',
+                    display: 'block',
                     borderBottom: '3px solid #FFD326'
                   }}
                 />
-                <div style={{ padding: '20px' }}>
-                  <h4 style={{ color: '#00482D', marginBottom: '10px', fontWeight: '600' }}>
-                    {image.title}
-                  </h4>
-                  <p style={{ color: '#666', lineHeight: '1.6' }}>
-                    {image.description}
-                  </p>
+                {/* Optional overlay hint */}
+                <div style={{
+                  padding: '10px',
+                  textAlign: 'center',
+                  backgroundColor: '#f8f9fa',
+                  fontSize: '0.85rem',
+                  color: '#00482D',
+                  fontWeight: '500'
+                }}>
+                  <i className="fas fa-search-plus me-1"></i> Click to enlarge
                 </div>
               </div>
             </Col>
           ))}
         </Row>
+
+        {/* Lightbox Modal */}
+        <Modal
+          show={lightboxImage !== null}
+          onHide={handleClose}
+          size="lg"
+          centered
+          style={{ zIndex: 9999 }}
+        >
+          <Modal.Body style={{ 
+            padding: 0, 
+            backgroundColor: 'transparent',
+            border: 'none',
+            position: 'relative'
+          }}>
+            <div style={{
+              position: 'relative',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              minHeight: '60vh'
+            }}>
+              <img
+                src={lightboxImage || ''}
+                alt="Enlarged view"
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '85vh',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain',
+                  borderRadius: '8px',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.5)'
+                }}
+              />
+              {/* Close button */}
+              <button
+                onClick={handleClose}
+                style={{
+                  position: 'absolute',
+                  top: '15px',
+                  right: '20px',
+                  background: 'rgba(0,0,0,0.6)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '44px',
+                  height: '44px',
+                  fontSize: '1.5rem',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.3s ease',
+                  zIndex: 10
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(0,0,0,0.8)';
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(0,0,0,0.6)';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+          </Modal.Body>
+        </Modal>
 
         {/* RDES Continuum */}
         <Row className="mt-4">
@@ -249,7 +245,7 @@ const RdesPage = () => {
             }}>
               <h3 style={{ color: '#00482D', marginBottom: '25px', fontWeight: '600', textAlign: 'center' }}>
                 <i className="fas fa-chart-line me-2" style={{ color: '#FFD326' }}></i>
-                The RDES Continuum
+                The RGES Continuum
               </h3>
               <Row className="text-center">
                 <Col md={3} className="mb-3">
@@ -342,7 +338,7 @@ const RdesPage = () => {
               <i className="fas fa-file-alt" style={{ fontSize: '3rem', marginBottom: '15px', display: 'block' }}></i>
               <h3 style={{ marginBottom: '15px', fontWeight: '600' }}>Propose a Project or Collaboration</h3>
               <p style={{ marginBottom: '20px', fontSize: '1.1rem' }}>
-                We welcome research proposals, extension project ideas, and partnership opportunities that align with our RDES framework.
+                We welcome research proposals, extension project ideas, and partnership opportunities that align with our RGES framework.
               </p>
               <Link to="/contact" style={{
                 backgroundColor: '#00482D',
