@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp public/web.config build/",
+    "build": "react-scripts build && node -e \"require('fs').copyFileSync('public/web.config', 'build/web.config')\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
