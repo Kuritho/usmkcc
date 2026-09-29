@@ -380,3 +380,26 @@ li:hover {
     border: 1px solid #00482D;
   }
 } 
+
+/* About.css - Add this for clickable source links */
+
+.source-link {
+  color: #00482D;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.source-link:hover {
+  color: #FFD326;
+  text-decoration: underline;
+}
+
+.source-link:visited {
+  color: #00482D;
+}
+
+.source-link:active {
+  color: #1a3d7c;
+}

@@ -1,3 +1,8 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt for USM-KCC Website
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /private
+
+Sitemap: https://usmkcc.edu.ph/sitemap.xml

@@ -329,3 +329,137 @@
     padding: 1.5rem;
   }
 }
+
+/* Directors Tree Styles */
+.directors-tree {
+  padding: 2rem 0;
+}
+
+.directors-tree .tree-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.tree-level-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #6c757d;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.directors-top-row {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.directors-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.directors-grid .official-card {
+  width: 220px;
+}
+
+.directors-top-row .official-card {
+  width: 250px;
+}
+
+/* Top directors should stand out */
+.directors-top-row .official-card {
+  border: 2px solid #2c3e50;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.directors-top-row .official-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+}
+
+/* Connector styles for directors */
+.directors-tree .level-connector {
+  position: relative;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.directors-tree .vertical-connector {
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #2c3e50, #3498db);
+  position: relative;
+}
+
+.directors-tree .horizontal-connector {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #2c3e50, #3498db, #2c3e50);
+  transform: translateY(-50%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .directors-top-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .directors-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .directors-top-row .official-card,
+  .directors-grid .official-card {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .directors-tree .level-connector {
+    height: 30px;
+  }
+}
+
+/* If you want to show a "tree" branch effect */
+.directors-top-row .official-card .connector-down {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 30px;
+  background: #2c3e50;
+}
+
+.directors-top-row .official-card {
+  position: relative;
+}
+
+.directors-grid .official-card .connector-up {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 30px;
+  background: #2c3e50;
+}
+
+.directors-grid .official-card {
+  position: relative;
+}

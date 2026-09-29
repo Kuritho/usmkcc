@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 const RdesPage = () => {
   const [lightboxImage, setLightboxImage] = useState(null);
 
-  // Core areas images
+  // Core areas images - now with 7 images total
   const coreImages = [
     '/images/rges/rges1.jpg',
     '/images/rges/rges2.jpg',
     '/images/rges/rges3.jpg',
-    '/images/rges/rges4.jpg'
+    '/images/rges/rges4.jpg',
+    '/images/rges/rges5.jpg', // New image 1
+    '/images/rges/rges6.jpg', // New image 2
+    '/images/rges/rges7.jpg'  // New image 3
   ];
 
   const handleImageClick = (src) => {
@@ -110,14 +113,14 @@ const RdesPage = () => {
               paddingBottom: '10px'
             }}>
               <i className="fas fa-cogs me-2"></i>
-              Our Core Areas
+              {/* Our Core Areas */}
             </h2>
           </Col>
         </Row>
 
         <Row className="g-4 mb-5">
           {coreImages.map((src, index) => (
-            <Col md={6} key={index}>
+            <Col md={6} lg={4} key={index}>
               <div 
                 style={{
                   backgroundColor: '#ffffff',
@@ -143,7 +146,8 @@ const RdesPage = () => {
                   alt={`Core area ${index + 1}`}
                   style={{
                     width: '100%',
-                    height: 'auto',
+                    height: '250px',
+                    objectFit: 'cover',
                     display: 'block',
                     borderBottom: '3px solid #FFD326'
                   }}
@@ -235,7 +239,7 @@ const RdesPage = () => {
         </Modal>
 
         {/* RDES Continuum */}
-        <Row className="mt-4">
+        {/* <Row className="mt-4">
           <Col>
             <div style={{
               backgroundColor: '#ffffff',
@@ -323,10 +327,10 @@ const RdesPage = () => {
               </Row>
             </div>
           </Col>
-        </Row>
+        </Row> */}
 
         {/* Call to Action */}
-        <Row className="mt-5">
+        {/* <Row className="mt-5">
           <Col>
             <div style={{
               backgroundColor: '#FFD326',
@@ -362,7 +366,7 @@ const RdesPage = () => {
               </Link>
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </div>
   );

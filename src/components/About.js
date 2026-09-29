@@ -1,19 +1,68 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Button, Carousel } from 'react-bootstrap';
+// About.js - Updated with gallery detail modal (Title removed from pictures)
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Button, Carousel, Spinner, Modal } from 'react-bootstrap';
+import { getGalleryImages } from '../supabase/services';
 import './About.css';
 
 const About = () => {
   const [activeButton, setActiveButton] = useState('about-usm-kcc');
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [loadingGallery, setLoadingGallery] = useState(true);
+  
+  // Modal state for gallery details
+  const [showModal, setShowModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const galleryImages = [
-    { id: 1, src: "/images/turnover.jpg", alt: "Turnover Ceremony" },
-    { id: 2, src: "/images/turnover1.jpg", alt: "Campus Event" },
-    { id: 3, src: "/images/pic1.jpg", alt: "Campus Building" },
-    { id: 4, src: "/images/pic2.jpg", alt: "Student Activity" },
-    { id: 5, src: "/images/pic3.jpg", alt: "Graduation Ceremony" },
-    { id: 6, src: "/images/pic4.jpg", alt: "Faculty Meeting" }
-  ];
+  useEffect(() => {
+    loadGalleryImages();
+  }, []);
+
+  const loadGalleryImages = async () => {
+    setLoadingGallery(true);
+    try {
+      const result = await getGalleryImages();
+      if (result.success && result.data.length > 0) {
+        setGalleryImages(result.data);
+      } else {
+        // Fallback to local images if no gallery images in database
+        setGalleryImages([
+          { id: 1, image_url: "/images/turnover.jpg", title: "Turnover Ceremony", description: "The formal turnover ceremony of USM-KCC leadership" },
+          { id: 2, image_url: "/images/turnover1.jpg", title: "Campus Event", description: "Students and faculty gathering for a campus event" },
+          { id: 3, image_url: "/images/pic1.jpg", title: "Campus Building", description: "Modern academic building at USM-KCC" },
+          { id: 4, image_url: "/images/pic2.jpg", title: "Student Activity", description: "Students participating in campus activities" },
+          { id: 5, image_url: "/images/pic3.jpg", title: "Graduation Ceremony", description: "Annual graduation ceremony celebrating student achievements" },
+          { id: 6, image_url: "/images/pic4.jpg", title: "Faculty Meeting", description: "Faculty members in a collaborative meeting" }
+        ]);
+      }
+    } catch (error) {
+      console.error('Error loading gallery:', error);
+      // Fallback to local images
+      setGalleryImages([
+        { id: 1, image_url: "/images/turnover.jpg", title: "Turnover Ceremony", description: "The formal turnover ceremony of USM-KCC leadership" },
+        { id: 2, image_url: "/images/turnover1.jpg", title: "Campus Event", description: "Students and faculty gathering for a campus event" },
+        { id: 3, image_url: "/images/pic1.jpg", title: "Campus Building", description: "Modern academic building at USM-KCC" },
+        { id: 4, image_url: "/images/pic2.jpg", title: "Student Activity", description: "Students participating in campus activities" },
+        { id: 5, image_url: "/images/pic3.jpg", title: "Graduation Ceremony", description: "Annual graduation ceremony celebrating student achievements" },
+        { id: 6, image_url: "/images/pic4.jpg", title: "Faculty Meeting", description: "Faculty members in a collaborative meeting" }
+      ]);
+    } finally {
+      setLoadingGallery(false);
+    }
+  };
+
+  // Handle image click to show details
+  const handleImageClick = (image) => {
+    console.log('🖼️ Image clicked:', image);
+    setSelectedImage(image);
+    setShowModal(true);
+  };
+
+  // Handle modal close
+  const handleModalClose = () => {
+    setShowModal(false);
+    setSelectedImage(null);
+  };
 
   return (
     <Container className="py-5 about-container">
@@ -24,6 +73,7 @@ const About = () => {
             src="/images/usmbggate.jpg" 
             alt="USM-KCC Campus Overview" 
             className="img-fluid rounded shadow campus-banner"
+            style={{ width: '100%', height: 'auto' }}
           />
         </Col>
       </Row>
@@ -85,13 +135,37 @@ const About = () => {
             className="img-fluid rounded shadow content-image"
           />
           <img 
-            src="/images/Pinsoy.jpg" 
+            src="/images/Pinsoy.png" 
             alt="Chancellor Pinsoy" 
             className="img-fluid rounded shadow mt-3 content-image portrait"
           />
         </Col>
         <Col xs={12} className="mt-3">
-          <small className="text-muted fst-italic">Source: USM Main Campus website</small>
+          <small className="text-muted fst-italic" style={{ fontSize: '0.75rem' }}>
+            Source: <a 
+              href="https://www.usm.edu.ph/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="source-link"
+              style={{
+                color: '#00482D',
+                textDecoration: 'none',
+                fontSize: '0.75rem',
+                fontWeight: 'normal',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.textDecoration = 'underline';
+                e.target.style.color = '#FFD326';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.textDecoration = 'none';
+                e.target.style.color = '#00482D';
+              }}
+            >
+              https://www.usm.edu.ph/
+            </a>
+          </small>
         </Col>
       </Row>
       
@@ -163,7 +237,31 @@ const About = () => {
             </li>
           </ul>
           <Col xs={12} className="mt-3">
-            <small className="text-muted fst-italic">Source: USM Main Campus website</small>
+            <small className="text-muted fst-italic" style={{ fontSize: '0.75rem' }}>
+              Source: <a 
+                href="https://www.usm.edu.ph/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="source-link"
+                style={{
+                  color: '#00482D',
+                  textDecoration: 'none',
+                  fontSize: '0.75rem',
+                  fontWeight: 'normal',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.textDecoration = 'underline';
+                  e.target.style.color = '#FFD326';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.textDecoration = 'none';
+                  e.target.style.color = '#00482D';
+                }}
+              >
+                https://www.usm.edu.ph/
+              </a>
+            </small>
           </Col>
         </Col>
       </Row>
@@ -195,59 +293,206 @@ const About = () => {
           />
         </Col>
         <Col xs={12} className="mt-3">
-          <small className="text-muted fst-italic">Source: USM Main Campus website</small>
+          <small className="text-muted fst-italic" style={{ fontSize: '0.75rem' }}>
+            Source: <a 
+              href="https://www.usm.edu.ph/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="source-link"
+              style={{
+                color: '#00482D',
+                textDecoration: 'none',
+                fontSize: '0.75rem',
+                fontWeight: 'normal',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.textDecoration = 'underline';
+                e.target.style.color = '#FFD326';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.textDecoration = 'none';
+                e.target.style.color = '#00482D';
+              }}
+            >
+              https://www.usm.edu.ph/
+            </a>
+          </small>
         </Col>
       </Row>
       
-      {/* Gallery Section (no source added here) */}
+      {/* Gallery Section - Connected to Supabase with Clickable Images (Title removed from display) */}
       <Row id="gallery" className="mb-5 py-3 section-content">
         <Col>
           <h2 className="section-subtitle mb-4">Gallery</h2>
-          <Carousel 
-            activeIndex={galleryIndex} 
-            onSelect={(selectedIndex) => setGalleryIndex(selectedIndex)}
-            indicators={false}
-            prevIcon={
-              <span aria-hidden="true" className="carousel-control-prev-icon gallery-nav-icon" />
-            }
-            nextIcon={
-              <span aria-hidden="true" className="carousel-control-next-icon gallery-nav-icon" />
-            }
-          >
-            {galleryImages.map((image) => (
-              <Carousel.Item key={image.id}>
-                <div className="d-flex justify-content-center">
-                  <img
-                    className="d-block img-fluid rounded shadow gallery-image"
-                    src={image.src}
-                    alt={image.alt}
-                  />
-                </div>
-                {image.alt && (
-                  <Carousel.Caption className="d-none d-md-block">
-                    <h5 className="gallery-caption">
-                      {image.alt}
-                    </h5>
-                  </Carousel.Caption>
-                )}
-              </Carousel.Item>
-            ))}
-          </Carousel>
+          
+          {loadingGallery ? (
+            <div className="text-center py-5">
+              <Spinner animation="border" variant="success" />
+              <p className="mt-2">Loading gallery...</p>
+            </div>
+          ) : galleryImages.length > 0 ? (
+            <>
+              <Carousel 
+                activeIndex={galleryIndex} 
+                onSelect={(selectedIndex) => setGalleryIndex(selectedIndex)}
+                indicators={false}
+                prevIcon={
+                  <span aria-hidden="true" className="carousel-control-prev-icon gallery-nav-icon" />
+                }
+                nextIcon={
+                  <span aria-hidden="true" className="carousel-control-next-icon gallery-nav-icon" />
+                }
+              >
+                {galleryImages.map((image) => (
+                  <Carousel.Item key={image.id}>
+                    <div 
+                      className="d-flex justify-content-center"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => handleImageClick(image)}
+                    >
+                      <img
+                        className="d-block img-fluid rounded shadow gallery-image"
+                        src={image.image_url}
+                        alt={image.title || 'Gallery image'}
+                        style={{ 
+                          maxHeight: '500px', 
+                          objectFit: 'contain',
+                          transition: 'transform 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.transform = 'scale(1.02)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.transform = 'scale(1)';
+                        }}
+                      />
+                    </div>
+                    {/* Title and description removed from carousel caption */}
+                    <Carousel.Caption 
+                      className="d-none d-md-block" 
+                      style={{ 
+                        backgroundColor: 'rgba(0,0,0,0.5)', 
+                        borderRadius: '8px', 
+                        padding: '8px 15px',
+                        cursor: 'pointer',
+                        bottom: '20px'
+                      }}
+                      onClick={() => handleImageClick(image)}
+                    >
+                      <small className="text-light" style={{ opacity: 0.9 }}>
+                        <i className="fas fa-search-plus me-2"></i>
+                        Click to view details
+                      </small>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                ))}
+              </Carousel>
 
-          {/* Thumbnail navigation */}
-          <div className="d-flex flex-wrap justify-content-center mt-3">
-            {galleryImages.map((image, index) => (
-              <img
-                key={image.id}
-                src={image.src}
-                alt={`Thumbnail ${index + 1}`}
-                className={`img-thumbnail mx-1 gallery-thumbnail ${galleryIndex === index ? 'active-thumbnail' : ''}`}
-                onClick={() => setGalleryIndex(index)}
-              />
-            ))}
-          </div>
+              {/* Thumbnail navigation - Clickable */}
+              <div className="d-flex flex-wrap justify-content-center mt-3">
+                {galleryImages.map((image, index) => (
+                  <img
+                    key={image.id}
+                    src={image.image_url}
+                    alt={`Thumbnail ${index + 1}`}
+                    className={`img-thumbnail mx-1 gallery-thumbnail ${galleryIndex === index ? 'active-thumbnail' : ''}`}
+                    onClick={() => setGalleryIndex(index)}
+                    style={{ 
+                      width: '80px', 
+                      height: '60px', 
+                      objectFit: 'cover',
+                      cursor: 'pointer',
+                      border: galleryIndex === index ? '3px solid #00482D' : '1px solid #ddd',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = 'scale(1.1)';
+                      e.target.style.borderColor = '#00482D';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = 'scale(1)';
+                      if (galleryIndex !== index) {
+                        e.target.style.borderColor = '#ddd';
+                      }
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Click hint */}
+              <div className="text-center mt-3">
+                <small className="text-muted">
+                  <i className="fas fa-hand-pointer me-1"></i>
+                  Click on any image to view full details
+                </small>
+              </div>
+            </>
+          ) : (
+            <p className="text-center text-muted py-4">No gallery images available.</p>
+          )}
         </Col>
       </Row>
+
+      {/* Gallery Detail Modal */}
+      <Modal show={showModal} onHide={handleModalClose} centered size="lg">
+        <Modal.Header closeButton style={{ backgroundColor: '#00482D', color: '#FFD326' }}>
+          <Modal.Title>
+            <i className="fas fa-image me-2"></i>
+            {selectedImage?.title || 'Image Details'}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ padding: '0' }}>
+          <div style={{ 
+            width: '100%', 
+            maxHeight: '70vh', 
+            overflow: 'hidden',
+            backgroundColor: '#f8f9fa',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+            <img 
+              src={selectedImage?.image_url} 
+              alt={selectedImage?.title || 'Gallery image'}
+              style={{ 
+                width: '100%',
+                height: 'auto',
+                maxHeight: '60vh',
+                objectFit: 'contain',
+                padding: '20px'
+              }}
+            />
+          </div>
+          <div style={{ padding: '20px', backgroundColor: '#ffffff' }}>
+            {selectedImage?.title && (
+              <h3 style={{ color: '#00482D', marginBottom: '10px' }}>
+                {selectedImage.title}
+              </h3>
+            )}
+            {selectedImage?.description && (
+              <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#333', marginBottom: '0' }}>
+                {selectedImage.description}
+              </p>
+            )}
+            {!selectedImage?.title && !selectedImage?.description && (
+              <p className="text-muted" style={{ marginBottom: '0' }}>
+                No additional details available for this image.
+              </p>
+            )}
+            <div className="mt-3 text-muted" style={{ fontSize: '0.85rem' }}>
+              <i className="fas fa-calendar-alt me-1"></i>
+              Uploaded: {selectedImage?.created_at ? new Date(selectedImage.created_at).toLocaleDateString() : 'Date not available'}
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer style={{ backgroundColor: '#f8f9fa' }}>
+          <Button variant="secondary" onClick={handleModalClose}>
+            <i className="fas fa-times me-2"></i>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };

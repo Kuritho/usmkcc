@@ -78,20 +78,31 @@ const Contact = () => {
             <Card.Body>
               <Card.Text style={{ color: usmLightGreen }}>
                 <strong>Office of the Registrar:</strong><br />
-                <FaPhone className="me-2" style={{ color: usmGreen }} /> +63 64 288 3300<br />
-                <FaEnvelope className="me-2" style={{ color: usmGreen }} /> registrar@usmkcc.edu.ph<br /><br />
+                {/* <FaPhone className="me-2" style={{ color: usmGreen }} /> +63 64 288 3300<br /> */}
+                <FaEnvelope className="me-2" style={{ color: usmGreen }} /> registrar@usm.edu.ph<br />
+                <FaFacebook className="me-2" style={{ color: usmGreen }} /> 
+                <a 
+                  href="https://www.facebook.com/share/1GvwRH2Xed/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ color: usmGreen, textDecoration: 'none' }}
+                >
+                  Registrar's Facebook Page
+                </a>
+                <br /><br />
                 
                 <strong>Office of Student Affairs:</strong><br />
-                <FaPhone className="me-2" style={{ color: usmGreen }} /> +63 64 288 3301<br />
-                <FaEnvelope className="me-2" style={{ color: usmGreen }} /> osa@usmkcc.edu.ph<br /><br />
+                {/* <FaPhone className="me-2" style={{ color: usmGreen }} /> +63 64 288 3301<br /> */}
+                <FaEnvelope className="me-2" style={{ color: usmGreen }} /> kccsas@usm.edu.ph<br /><br />
                 
                 <strong>Information and communications Technology Office:</strong><br />
-                <FaPhone className="me-2" style={{ color: usmGreen }} /> +63 64 288 3302<br />
+                {/* <FaPhone className="me-2" style={{ color: usmGreen }} /> +63 64 288 3302<br /> */}
                 <FaEnvelope className="me-2" style={{ color: usmGreen }} /> kcc_ictc@usm.edu.ph<br /><br />
                 
                 <strong>General Inquiries:</strong><br />
-                <FaPhone className="me-2" style={{ color: usmGreen }} /> +63 64 288 3303<br />
-                <FaEnvelope className="me-2" style={{ color: usmGreen }} /> usmkcc2019@gmail.com
+                <FaPhone className="me-2" style={{ color: usmGreen }} /> +63 910 307 5650<br />
+                <FaEnvelope className="me-2" style={{ color: usmGreen }} /> 
+usmkcc_info@usm.edu.ph
               </Card.Text>
               
               <div className="social-icons mt-4">

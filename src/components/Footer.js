@@ -1,8 +1,18 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+// src/components/Footer.js - Updated with Simple Visitor Statistics
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Badge, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { getVisitorStats } from '../services/visitorService';
 
 const Footer = () => {
+  const [visitorStats, setVisitorStats] = useState({
+    total: 0,
+    today: 0,
+    thisWeek: 0,
+    thisMonth: 0
+  });
+  const [loading, setLoading] = useState(true);
+
   const quickLinks = [
     { path: "/", name: "Home" },
     { path: "/about", name: "About USM-KCC" },
@@ -11,6 +21,24 @@ const Footer = () => {
     { path: "/contact", name: "Contact Us" },
     { path: "/offices", name: "Offices" }
   ];
+
+  // Get visitor statistics on mount
+  useEffect(() => {
+    const loadStats = async () => {
+      const result = await getVisitorStats();
+      if (result.success) {
+        setVisitorStats(result.data);
+      }
+      setLoading(false);
+    };
+    
+    loadStats();
+  }, []);
+
+  // Format numbers with commas
+  const formatNumber = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   return (
     <footer className="footer" style={{
@@ -160,7 +188,7 @@ const Footer = () => {
         </Row>
         
         <Row className="mt-4">
-          <Col md={8} className="mb-4 mb-md-0">
+          <Col md={7} className="mb-4 mb-md-0">
             <div style={{
               backgroundColor: '#00482D',
               padding: '20px',
@@ -219,7 +247,7 @@ const Footer = () => {
             </div>
           </Col>
           
-          <Col md={4}>
+          <Col md={5}>
             <div style={{
               backgroundColor: '#00482D',
               padding: '20px',
@@ -229,24 +257,99 @@ const Footer = () => {
               border: '1px solid rgba(255, 255, 255, 0.1)',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center'
+              justifyContent: 'center'
             }}>
               <h5 style={{ 
                 color: '#FFD326', 
                 marginBottom: '15px', 
                 fontWeight: '600',
                 textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
-                fontSize: '18px'
-              }}>Excellence in Education</h5>
+                fontSize: '18px',
+                textAlign: 'center'
+              }}>Visitor Statistics</h5>
+              
+              {loading ? (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                  <Spinner animation="border" variant="warning" size="sm" />
+                  <span style={{ color: '#ffffff', fontSize: '14px' }}>Loading stats...</span>
+                </div>
+              ) : (
+                <div style={{ width: '100%' }}>
+                  <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '6px 0',
+                    borderBottom: '1px solid rgba(255,255,255,0.1)'
+                  }}>
+                    <span style={{ color: '#ffffff', fontSize: '13px' }}>
+                      <i className="fas fa-users" style={{ color: '#FFD326', marginRight: '8px', width: '16px' }}></i>
+                      Total Visitors
+                    </span>
+                    <span style={{ color: '#FFD326', fontSize: '16px', fontWeight: '600' }}>
+                      {formatNumber(visitorStats.total)}
+                    </span>
+                  </div>
+                  
+                  <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '6px 0',
+                    borderBottom: '1px solid rgba(255,255,255,0.1)'
+                  }}>
+                    <span style={{ color: '#ffffff', fontSize: '13px' }}>
+                      <i className="fas fa-calendar-day" style={{ color: '#FFD326', marginRight: '8px', width: '16px' }}></i>
+                      Today's Visitors
+                    </span>
+                    <span style={{ color: '#FFD326', fontSize: '16px', fontWeight: '600' }}>
+                      {formatNumber(visitorStats.today)}
+                    </span>
+                  </div>
+                  
+                  <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '6px 0',
+                    borderBottom: '1px solid rgba(255,255,255,0.1)'
+                  }}>
+                    <span style={{ color: '#ffffff', fontSize: '13px' }}>
+                      <i className="fas fa-calendar-week" style={{ color: '#FFD326', marginRight: '8px', width: '16px' }}></i>
+                      This Week
+                    </span>
+                    <span style={{ color: '#FFD326', fontSize: '16px', fontWeight: '600' }}>
+                      {formatNumber(visitorStats.thisWeek)}
+                    </span>
+                  </div>
+                  
+                  <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '6px 0'
+                  }}>
+                    <span style={{ color: '#ffffff', fontSize: '13px' }}>
+                      <i className="fas fa-calendar-alt" style={{ color: '#FFD326', marginRight: '8px', width: '16px' }}></i>
+                      This Month
+                    </span>
+                    <span style={{ color: '#FFD326', fontSize: '16px', fontWeight: '600' }}>
+                      {formatNumber(visitorStats.thisMonth)}
+                    </span>
+                  </div>
+                </div>
+              )}
+              
               <p style={{ 
-                color: '#ffffff', 
-                fontSize: '14px', 
+                marginTop: '15px', 
                 marginBottom: '0',
-                fontStyle: 'italic'
+                color: 'rgba(255,255,255,0.5)', 
+                fontSize: '10px',
+                fontStyle: 'italic',
+                textAlign: 'center'
               }}>
-                "Shaping minds, transforming communities"
+                {/* <i className="fas fa-info-circle me-1"></i> */}
+                {/* Updated in real-time */}
               </p>
             </div>
           </Col>

@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "USM-KCC",
+  "name": "University of Southern Mindanao - Kidapawan City Campus",
+  "description": "Official website of USM-Kidapawan City Campus offering quality education in Mindanao.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,7 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#00482D",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary"
 }

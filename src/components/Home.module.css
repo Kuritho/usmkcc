@@ -94,3 +94,276 @@
     font-size: 1.2rem;
   }
 }
+/* Home.module.css */
+.heroSection {
+  overflow: hidden;
+}
+
+.heroSlide {
+  height: 85vh;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  position: relative;
+}
+
+.heroSection :global(.carousel) {
+  overflow: hidden;
+}
+
+.heroSection :global(.carousel-caption) {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.heroContent {
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heroContent h1,
+.heroContent h2 {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.captionText {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Carousel indicator styling */
+.heroSection :global(.carousel-indicators button) {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #FFD326;
+  margin: 0 6px;
+}
+
+.heroSection :global(.carousel-indicators .active) {
+  background-color: #FFD326;
+}
+
+/* Carousel control styling */
+.heroSection :global(.carousel-control-prev),
+.heroSection :global(.carousel-control-next) {
+  width: 5%;
+  opacity: 0.7;
+}
+
+.heroSection :global(.carousel-control-prev:hover),
+.heroSection :global(.carousel-control-next:hover) {
+  opacity: 1;
+}
+
+/* Quick stats styling */
+.quickStats {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(2, 87, 11, 0.9);
+  padding: 1rem 0;
+  z-index: 10;
+}
+
+/* Hover effect for buttons */
+:global(.hover-effect) {
+  transition: all 0.3s ease;
+}
+
+:global(.hover-effect:hover) {
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 72, 45, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heroSlide {
+    height: 70vh;
+  }
+  
+  .heroContent h1 {
+    font-size: 2.2rem;
+  }
+  
+  .heroContent h2 {
+    font-size: 1.8rem;
+  }
+  
+  .captionText {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroSlide {
+    height: 60vh;
+  }
+  
+  .heroContent h1 {
+    font-size: 1.8rem;
+  }
+  
+  .heroContent h2 {
+    font-size: 1.4rem;
+  }
+  
+  .captionText {
+    font-size: 1rem;
+  }
+}
+
+/* News and Announcements - Enhanced Styles */
+.hover-shadow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-shadow:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Pulse animation for urgent badges */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Section title enhancement */
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #02570b;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #02570b, #1a3d7c);
+  border-radius: 2px;
+}
+
+/* Card hover effects */
+.card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem !important;
+  }
+  
+  .card-body {
+    padding: 1.25rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .card {
+    border-radius: 10px !important;
+  }
+}
+/* src/components/Home.module.css - Add these styles */
+
+/* For news and announcement images */
+.news-image-container,
+.announcement-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  min-height: 200px;
+  padding: 10px;
+}
+
+.news-image-container img,
+.announcement-image-container img {
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* For Campus Updates */
+.update-card-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  min-height: 250px;
+  padding: 10px;
+}
+
+.update-card-image-wrapper img {
+  max-width: 100%;
+  max-height: 250px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Hero section full image */
+.hero-slide {
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: #1a1a2e !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .news-image-container,
+  .announcement-image-container {
+    min-height: 150px;
+  }
+  
+  .update-card-image-wrapper {
+    min-height: 180px;
+  }
+  
+  .update-card-image-wrapper img {
+    max-height: 180px;
+  }
+}
